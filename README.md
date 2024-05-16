@@ -1,7 +1,7 @@
 # nazmos-sakib.github.io
 
-# [Wort-Gewandt](nazmos-sakib.github.io/Wort-Gewandt/)
-# [TrinkBrunnen](nazmos-sakib.github.io/TrinkBrunnen/)
+# [Wort-Gewandt](https://nazmos-sakib.github.io/Wort-Gewandt/)
+# [TrinkBrunnen](https://nazmos-sakib.github.io/TrinkBrunnen/)
 # [WortSpeil](https://nazmos-sakib.github.io/WortSpiel/)
 # [AmbientIQ](https://nazmos-sakib.github.io/AmbientIQ/)
 # [Smart_Home_Controller_pine64](https://nazmos-sakib.github.io/Smart_Home_Controller_pine64/)
