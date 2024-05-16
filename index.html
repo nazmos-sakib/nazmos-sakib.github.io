@@ -1142,7 +1142,7 @@ ul.courses li:hover {
             <div class="card-container">
                 <div class="card">
                     <a href="https://nazmos-sakib.github.io/Wort-Gewandt/">
-                        <img src="assets/wort-gewandt/1.jpeg" alt="">
+                        <img class="Wortgewandt" src="assets/wort-gewandt/1.jpeg" alt="">
                         <div class="card-content">
                             <h3>Wortgewandt</h3>
                             <p>
@@ -1156,11 +1156,11 @@ ul.courses li:hover {
 
                 <div class="card">
                     <a href="https://nazmos-sakib.github.io/AmbientIQ/">
-                        <img src="assets/ambient-iq/Screenshot_20240123-132001.png" alt="">
+                        <img class="ambient-iq" src="assets/ambient-iq/1.png" alt="">
                         <div class="card-content">
                             <h3>AmbientIQ</h3>
                             <p>
-                                store paersonalised word and pronunciation. Play pronunciation or play word matching game.
+                                Home assistent. Pair with pin64 microcontroller. Able to control electronic device.
                             </p>
     
                         </div>
@@ -1170,11 +1170,11 @@ ul.courses li:hover {
 
                 <div class="card">
                     <a href="https://nazmos-sakib.github.io/TrinkBrunnen/">
-                        <img src="assets/Trinkenbrunen/Screenshot_20230912-214433.png" alt="">
+                        <img class="Trinkbrunen" src="assets/Trinkenbrunen/1.png" alt="">
                         <div class="card-content">
                             <h3>TrinkBrunnen</h3>
                             <p>
-                                store paersonalised word and pronunciation. Play pronunciation or play word matching game.
+                                Android app empowers users to discover, save, and even contribute to the ever-growing list of public drinking fountains. Whether you’re a local or a traveler, Trinkbrunnen makes sure you never go thirsty again.
                             </p>
     
                         </div>
@@ -1184,11 +1184,11 @@ ul.courses li:hover {
 
                 <div class="card">
                     <a href="https://nazmos-sakib.github.io/WortSpiel/">
-                        <img src="assets/wort-spiel/WhatsApp Image 2024-05-16 at 22.15.59.jpeg" alt="">
+                        <img class="WortSpiel" src="assets/wort-spiel/1.jpeg" alt="">
                         <div class="card-content">
                             <h3>WortSpiel</h3>
                             <p>
-                                store paersonalised word and pronunciation. Play pronunciation or play word matching game.
+                                Play game with word. German word to english word matching game.
                             </p>
     
                         </div>
@@ -1198,13 +1198,13 @@ ul.courses li:hover {
 
                 <div class="card">
                     <a href="https://nazmos-sakib.github.io/CashManager/">
-                        <img src="assets/cash-manager/img.png" alt="">
+                        <img class="CashManager" src="assets/cash-manager/1.png" alt="">
                         <div class="card-content">
                             <h3>
                                 CashManager
                             </h3>
                             <p>
-                                store paersonalised word and pronunciation. Play pronunciation or play word matching game.
+                                anyone who wants to take control of their finances and manage their money more effectively. With its advanced features, intuitive interface, and powerful visualization tools, Cash Manager makes it easy to track and manage your expenses, investments, loans, and transactions, helping you to achieve your financial goals.
                             </p>
     
                         </div>
@@ -1214,11 +1214,11 @@ ul.courses li:hover {
 
                 <div class="card">
                     <a href="https://nazmos-sakib.github.io/CoinPaprikaAPIJava/">
-                        <img src="assets/CoinPaprikaAPIJava/WhatsApp Image 2024-05-16 at 22.46.53.jpeg" alt="">
+                        <img class="CoinPaprikaAPI" src="assets/CoinPaprikaAPIJava/1.jpeg" alt="">
                         <div class="card-content">
                             <h3>CoinPaprikaAPI</h3>
                             <p>
-                                store paersonalised word and pronunciation. Play pronunciation or play word matching game.
+                                Goal of this project was to learn how to fetch data from an API and then update the view accordingly.
                             </p>
     
                         </div>
@@ -1246,6 +1246,52 @@ ul.courses li:hover {
           </div>
       </section>
     </section>
+
+
+
+    <script>
+        const wortgewandt_images = ["assets/wort-gewandt/1.jpeg", "assets/wort-gewandt/2.jpeg","assets/wort-gewandt/3.jpeg","assets/wort-gewandt/4.jpeg"]; // Replace with your image URLs
+        let wortgewandt_index = 0;
+
+        const cash_manager_images = ["assets/cash-manager/1.png","assets/cash-manager/2.png","assets/cash-manager/3.png","assets/cash-manager/4.png","assets/cash-manager/5.png","assets/cash-manager/6.png","assets/cash-manager/7.png","assets/cash-manager/8.png"];
+        let cash_manager_index = 0;
+
+        const Trinkbrunen_images = ["assets/Trinkenbrunen/1.png","assets/Trinkenbrunen/2.png","assets/Trinkenbrunen/3.png","assets/Trinkenbrunen/4.png","assets/Trinkenbrunen/5.png","assets/Trinkenbrunen/6.png","assets/Trinkenbrunen/7.png","assets/Trinkenbrunen/8.png","assets/Trinkenbrunen/9.png","assets/Trinkenbrunen/10.png","assets/Trinkenbrunen/11.png","assets/Trinkenbrunen/12.png","assets/Trinkenbrunen/13.png","assets/Trinkenbrunen/14.png"];
+        let Trinkbrunen_index = 0;
+
+        const CoinPaprikaAPI_images = ["assets/CoinPaprikaAPIJava/1.jpeg","assets/CoinPaprikaAPIJava/2.jpeg"];
+        let CoinPaprikaAPI_index = 0;
+
+        const WortSpiel_images = ["assets/wort-spiel/1.jpeg","assets/wort-spiel/2.jpeg","assets/wort-spiel/3.jpeg"];
+        let WortSpiel_index = 0;
+      
+        function changeImage() {
+            //wortgewandt
+          document.querySelector('.Wortgewandt').src = wortgewandt_images[wortgewandt_index];
+          wortgewandt_index = (wortgewandt_index + 1) % wortgewandt_images.length;
+
+          //cash_manager
+          document.querySelector('.CashManager').src = cash_manager_images[cash_manager_index];
+          cash_manager_index = (cash_manager_index + 1) % cash_manager_images.length;
+
+          //coinpaprika
+          document.querySelector('.CoinPaprikaAPI').src = CoinPaprikaAPI_images[CoinPaprikaAPI_index];
+          CoinPaprikaAPI_index = (CoinPaprikaAPI_index + 1) % CoinPaprikaAPI_images.length;
+
+          //Trinkbrunen
+          document.querySelector('.Trinkbrunen').src = Trinkbrunen_images[Trinkbrunen_index];
+          Trinkbrunen_index = (Trinkbrunen_index + 1) % Trinkbrunen_images.length;
+
+          //wort-spielt 
+          document.querySelector('.WortSpiel').src = WortSpiel_images[WortSpiel_index];
+          WortSpiel_index = (WortSpiel_index + 1) % WortSpiel_images.length;
+        }
+      
+        setInterval(changeImage, 2000); // Change image every 3 seconds
+      </script>
+
+
+
 
   </body>
 </html>
