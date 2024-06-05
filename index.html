@@ -1488,6 +1488,19 @@ ul.courses li:hover {
                     
                 </div>
 
+                <div class="card">
+                    <a href="https://nazmos-sakib.github.io/Brain-Trainer/">
+                        <img class="brain-trainer" src="assets/brain-trainer/img1.png" alt="">
+                        <div class="card-content">
+                            <h3>Brain Trainer</h3>
+                            <p>
+                            </p>
+    
+                        </div>
+                    </a>
+                    
+                </div>
+
 
 
             </div> 
@@ -1527,6 +1540,10 @@ ul.courses li:hover {
         const WortSpiel_images = ["assets/wort-spiel/1.jpeg","assets/wort-spiel/2.jpeg","assets/wort-spiel/3.jpeg"];
         let WortSpiel_index = 0;
       
+        const brain_trainer_images = ["assets/brain-trainer/img1.png","assets/brain-trainer/img2.png","assets/brain-trainer/img3.png"];
+        let brain_trainer_index = 0;
+      
+        
         function changeImage() {
             //wortgewandt
           document.querySelector('.Wortgewandt').src = wortgewandt_images[wortgewandt_index];
@@ -1547,6 +1564,10 @@ ul.courses li:hover {
           //wort-spielt 
           document.querySelector('.WortSpiel').src = WortSpiel_images[WortSpiel_index];
           WortSpiel_index = (WortSpiel_index + 1) % WortSpiel_images.length;
+
+          //Brain Trainer 
+          document.querySelector('.brain-trainer').src = brain_trainer_images[brain_trainer_index];
+          brain_trainer_index = (brain_trainer_index + 1) % brain_trainer_images.length;
         }
       
         setInterval(changeImage, 2000); // Change image every 3 seconds
