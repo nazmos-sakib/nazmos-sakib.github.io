@@ -16,7 +16,6 @@
 .card img{
     width: 100%;
     height: auto;
-    transition: transform 0.5s ease;
 }
 
 .card-content{

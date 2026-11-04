@@ -162,6 +162,10 @@ p {
     margin-bottom: 1.3em;
 }
 
+p.summary-paragraph {
+    margin-top: 1.3em;
+}
+
 a {
     color: #0095ff;
     text-decoration: none;
@@ -242,8 +246,7 @@ section .location {
 #header>#profiles,
 #header>#contact,
 #skills,
-#languages,
-#interests {
+#languages {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -336,47 +339,30 @@ h2.section-title {
     margin: 0;
 }
 
-.section>section>header .space-left {
-    position: absolute;
-    left: -1.56rem;
-    top: 5px;
-    color: #aaa;
-    line-height: 1;
-    opacity: 0;
-}
-
 .position,
 .company,
-.organization,
 .institution,
 .date,
 .area,
-.studyType,
-.title,
-.awarder {
+.studyType {
     display: inline;
 }
 
 .position,
 .studyType,
 .area,
-.title,
 .language,
 .name {
     font-weight: 600;
 }
 
 .company::before,
-.institution::before,
-.organization::before,
-.awarder::before {
+.institution::before {
     content: "at "
 }
 
 .company,
-.institution,
-.organization,
-.awarder {
+.institution {
     color: #606d76;
     font-weight: 400;
 }
@@ -388,13 +374,11 @@ h2.section-title {
     font-weight: 600;
 }
 
-ul.keywords,
-ul.courses {
+ul.keywords {
     margin-top: .5em;
 }
 
-ul.keywords li,
-ul.courses li {
+ul.keywords li {
     display: inline-block;
     margin: 2px 2px 2px 0;
     padding: 4px 5px 5px;
@@ -407,8 +391,7 @@ ul.courses li {
     white-space: nowrap;
 }
 
-ul.keywords li:hover,
-ul.courses li:hover {
+ul.keywords li:hover {
     background: #dfeaf0;
 }
 
@@ -416,94 +399,114 @@ ul.courses li:hover {
     padding: .5em 0;
 }
 
-.gpa {
-    padding-bottom: .5em;
-}
-
 .fa.social {
     font-size: 1.1em;
 }
 
 
+/* Title buttons share the existing checkbox state and arrow controls. */
+.item-title-toggle {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: inherit;
+    cursor: pointer;
+}
+
+.item-row-toggle {
+    cursor: pointer;
+}
+
+.item-title-toggle:hover {
+    text-decoration: underline;
+}
+
+.work-item .position:has(a) .item-title-toggle {
+    color: #0095ff;
+}
+
+.work-item > .toggle-item ~ .item {
+    display: none;
+}
+
+.work-item > .toggle-item:checked ~ .item {
+    display: block;
+}
+
+.project-subheading {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Thesis entries */
+.thesis-item {
+    margin: .7rem 0 1.3rem;
+}
+
+.thesis-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 1rem;
+}
+
+.thesis-degree {
+    display: inline-block;
+    margin-bottom: .5rem;
+    padding: 4px 5px;
+    border-radius: 3px;
+    color: #3e6d8e;
+    background: #dfeaf1;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.thesis-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0095ff;
+}
+
+.thesis-institute {
+    margin-top: .3rem;
+}
+
+.thesis-year {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.thesis-description {
+    margin-top: .7rem;
+}
+
+.thesis-description summary {
+    display: list-item;
+    cursor: pointer;
+    color: #606d76;
+}
+
+.thesis-description p {
+    margin: .5rem 0 0;
+}
+
 /* Social Media Brand Colors */
 
-.google-plus {
-    color: #dd4b39;
-}
 
-.tumblr {
-    color: #32506d;
-}
-
-.foursquare {
-    color: #0072b1;
-}
-
-.facebook {
-    color: #3b5998;
-}
 
 .linkedin {
     color: #007bb6;
-}
-
-.pinterest {
-    color: #cb2027;
-}
-
-.dribbble {
-    color: #ea4c89;
-}
-
-.instagram {
-    color: #517fa4;
-}
-
-.twitter {
-    color: #00aced;
-}
-
-.soundcloud {
-    color: #ff3a00;
-}
-
-.wordpress {
-    color: #21759b;
-}
-
-.youtube {
-    color: #bb0000;
 }
 
 .github {
     color: #171515;
 }
 
-.stack-overflow {
-    color: #828386;
-    position: relative;
-}
-
-.flickr {
-    color: #ff0084;
-}
-
-.stack-overflow::after {
-    position: absolute;
-    left: 0;
-    content: '\f16c';
-    color: #f68a1f;
-    overflow: hidden;
-    height: 100%;
-}
-
-.telegram {
-    color: #2291c3;
-}
-
 #languages .item,
-#skills .item,
-#interests .item {
+#skills .item {
     width: 15em;
     padding: 0 .5em .5em 0;
     border-bottom: none;
@@ -541,17 +544,16 @@ ul.courses li:hover {
     height: 5px;
 }
 
-.level.beginner .bar::after {
-    background: #EB5F51;
-    width: 2.5em;
-}
-
 .level.intermediate .bar::after {
-    background: #ffdf1f;
+    background: #f8ff1f;
     width: 5em;
 }
 
-.level.advanced .bar::after,
+.level.advance .bar::after {
+    background: #ddff1f;
+    width: 6em;
+}
+
 .level.fluent .bar::after {
     background: #5CB85C;
     width: 7.5em;
@@ -561,12 +563,6 @@ ul.courses li:hover {
 .level.native.speaker .bar::after {
     background: #59C596;
     width: 10em;
-}
-
-
-#references .item {
-    padding-left: .5em;
-    border-left: 5px solid #ff6d1f;
 }
 
 .toggle-item {
@@ -593,6 +589,70 @@ ul.courses li:hover {
 }
 
 
+.image-slider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.slider-window {
+    overflow: hidden;
+    width: 100%;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+/*
+Notiz screenshot slide show
+*/
+.slider-track img {
+    width: calc(33.333% - 10px);
+    margin: 0 5px;
+    flex-shrink: 0;
+
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.slider-btn {
+    border: none;
+    background: none;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.slider-btn:hover {
+    opacity: 0.6;
+}
+
+
+/* Tablet */
+@media (max-width: 900px) {
+    .slider-track img {
+        width: calc(50% - 10px);
+    }
+}
+
+/* Phone */
+@media (max-width: 600px) {
+    .slider-track img {
+        width: calc(100% - 10px);
+    }
+
+    .slider-btn {
+        font-size: 22px;
+        padding: 5px;
+    }
+}
+/*
+end:: Notiz screenshot slide show 
+*/
+
 /****************
 *		TABLET
 ****************/
@@ -616,10 +676,6 @@ ul.courses li:hover {
     #resume {
         width: 820px;
         margin: 2rem auto;      
-    }
-    .section>section>header .space-left {
-        opacity: 1;
-        cursor: pointer;
     }
     .section>section {
         margin-left: 1.67rem;
@@ -653,9 +709,7 @@ ul.courses li:hover {
         transition: all .5s linear;
     }
     .company::before,
-    .institution::before,
-    .organization::before,
-    .awarder::before {
+    .institution::before {
         content: "| ";
     }
     .header-left {
@@ -667,15 +721,12 @@ ul.courses li:hover {
         float: right;
         padding: .2em;
     }
-    .display {
-        display: none;
-    }
-    .display:not(.none) {
-        display: block;
-    }
 }
 
 @media print {
+    .work-item > .toggle-item ~ .item {
+        display: block;
+    }
     #resume {
         margin: 0;
         padding: 0;
@@ -691,9 +742,7 @@ ul.courses li:hover {
         display: none;
     }
     .company::before,
-    .institution::before,
-    .organization::before,
-    .awarder::before {
+    .institution::before {
         content: "at ";
     }
     .main-summary {
@@ -709,9 +758,6 @@ ul.courses li:hover {
     .section .location {
         padding-bottom: .15rem;
     }
-    .stack-overflow::after {
-        content: "";
-    }
     .fa.social {
         color: #828386;
     }
@@ -722,20 +768,17 @@ ul.courses li:hover {
     li {
         padding: 0;
     }
-    ul.keywords li,
-    ul.courses li {
+    ul.keywords li {
         margin: 0;
         padding: 0;
         font-size: .8rem;
         text-transform: lowercase;
     }
-    ul.keywords li::after,
-    ul.courses li::after {
+    ul.keywords li::after {
         padding: 0 0 0 .1rem;
         content: " |";
     }
-    ul.keywords::before,
-    ul.courses::before {
+    ul.keywords::before {
         font-size: .8rem;
         font-weight: 600;
     }
@@ -749,11 +792,7 @@ ul.courses li:hover {
         margin: 0;
         padding: 0;
     }
-    ul.courses::before {
-        content: "Major courses: ";
-    }
-    ul.keywords li:last-of-type::after,
-    ul.courses li:last-of-type::after {
+    ul.keywords li:last-of-type::after {
         content: "";
     }
     .level em {
@@ -765,10 +804,6 @@ ul.courses li:hover {
     }
     #profiles .item {
         padding: 0;
-    }
-    .item.display {
-        display: block;
-        opacity: 1 !important;
     }
 }
 
@@ -794,11 +829,11 @@ ul.courses li:hover {
     		<div id="contact">
     			<div class="website">
     				<span class="fa fa-external-link"></span>
-    				<a target="_blank" target="_blank" href="https://nazmos-sakib.github.io/">https://nazmos-sakib.github.io/</a>
+    				<a href="https://nazmos-sakib.github.io/" target="_blank" rel="noopener noreferrer">https://nazmos-sakib.github.io/</a>
     			</div>
     			<div class="email">
     				<span class="fa fa-envelope-o"></span>
-    				<a href="mailto:to.nazmos.sakib@gmail.com">n.nazmos.sakib@gmail.com</a>
+    				<a href="mailto:to.nazmos.sakib@gmail.com" target="_blank" rel="noopener noreferrer">n.nazmos.sakib@gmail.com</a>
     			</div>
     		</div>
     
@@ -807,7 +842,7 @@ ul.courses li:hover {
     				<div class="username">
     					<span class="fa fa-linkedin linkedin social"></span>
     					<span class="url">
-    						<a target="_blank" href="https://www.linkedin.com/in/md-nazmos-sakib-2a5256259">md.nazmos.sakib</a>
+    						<a href="https://www.linkedin.com/in/md-nazmos-sakib-2a5256259" target="_blank" rel="noopener noreferrer">md.nazmos.sakib</a>
     					</span> 
     				</div>
     			</div>
@@ -815,23 +850,18 @@ ul.courses li:hover {
     				<div class="username">
     					<span class="fa fa-github github social"></span>
     					<span class="url">
-    						<a target="_blank" href="https://github.com/nazmos-sakib">nazmos-sakib</a>
+    						<a href="https://github.com/nazmos-sakib" target="_blank" rel="noopener noreferrer">nazmos-sakib</a>
     					</span> 
     				</div>
     			</div>
 
-    			<!-- div class="item">
-    				<div class="username">
-    					<span class="fa fa-twitter twitter social"></span>
-    					<span></span>
-    				</div>
-    			</div-->
+    			
 
     			<div class="item">
     				<div class="username">
     					<span class="fa fa-download-pdf download-pdf social"></span>
     					<span class="url">
-    						<a target="_blank" href="StaticFiles/sakib-resume.pdf">Download resume PDF</a>
+    						<a href="StaticFiles/sakib-resume.pdf" target="_blank" rel="noopener noreferrer">Download resume PDF</a>
     					</span> 
     				</div>
     			</div>
@@ -839,7 +869,7 @@ ul.courses li:hover {
     				<div class="username">
     					<span class="fa fa-json json social"></span>
     					<span class="url">
-    						<a target="_blank" href="https://nazmos-sakib.github.io/resume.json">JSON</a>
+    						<a href="https://nazmos-sakib.github.io/resume.json" target="_blank" rel="noopener noreferrer">JSON</a>
     					</span> 
     				</div>
     			</div>
@@ -927,7 +957,7 @@ ul.courses li:hover {
 
     		<div class="item">
     			<h3 class="name">
-    				<a href="https://sites.google.com/view/a-dev-certificat/home">Certificates:</a> 
+    				<a href="https://sites.google.com/view/a-dev-certificat/home" target="_blank" rel="noopener noreferrer">Certificates:</a> 
     			</h3>
     			 
     			
@@ -949,15 +979,79 @@ ul.courses li:hover {
 
     <section class="section">
       <header>
-        <h2 class='section-title'>Work Experience <span class="item-count">(2)</span></h2>
+        <h2 class='section-title'>Work Experience <span class="item-count">(3)</span></h2>
       </header>
     
       <section id="work">
+
         <section class="work-item">
-    
-    
     			<header>
-    				<div class="position">Junior Android Developer</div>
+    				<div class="position">IT & Network Support Engineer</div>
+    				<div class="company"><a href="https://chaseitglobal.com/contact" target="_blank" rel="noopener noreferrer">Chase IT Global</a></div>
+                    <div class="company">Freelancer</div> 
+    				<div class="date">
+    				  <span class="startDate">2026</span> 
+    					<span class="endDate">- Current</span>
+    				</div>
+    			</header>
+    			
+    			<span class="location">
+    				<span class="fa fa-map-marker"></span> 
+    				<span class="countryCode">(DE)</span> 
+    				<span class="region">Thüringen</span> 
+    			</span>
+         	<div class="item">
+                <ul class="highlights">
+                    <li><p>Provide on-site technical support for IT infrastructure, network equipment, and end-user devices.</p></li>
+                    <li><p>Install, configure, maintain, and troubleshoot network devices, including switches, routers, access points, and cabling infrastructure.</p></li>
+                    <li><p>Provide on-site technical support for IT infrastructure, network equipment, and end-user devices.</p></li>
+                    <li><p>Install, configure, maintain, and troubleshoot network devices, including switches, routers, access points, and cabling infrastructure.</p></li>
+                    <li><p>Perform hardware installation, replacement, and maintenance of servers, computers, laptops, and IT peripherals.</p></li>
+                    <li><p>Assist remote engineers with physical troubleshooting, diagnostics, and infrastructure maintenance.</p></li>
+                    <li><p>Perform rack and stack activities, structured cabling, patching, and equipment relocation in server rooms and data centers.</p></li>
+                    <li><p>Conduct network connectivity tests and physical inspections.</p></li>
+                    <li><p>Execute technical instructions provided by remote engineers and report findings in real time.</p></li>
+                    <li><p>Document completed activities through technical reports, photographs, equipment details, and service completion forms.</p></li>
+                    <li><p>Coordinate with customers, remote technical teams, and project coordinators to ensure successful service delivery.</p></li>
+                </ul>
+        	</div>
+        </section>
+ 
+
+        <section class="work-item">
+            <input id="work-item-3" type="checkbox" class="toggle-item" />
+            <label for="work-item-3"></label>
+    			<header>
+    				<div class="position"><button type="button" class="item-title-toggle" data-toggle="work-item-3" aria-expanded="false" aria-controls="work-item-3-details">IT Support Engineer</button></div>
+    				<div class="company">HK-Tech IT Solution UG</div>
+                    <div class="company">Freelancer</div> 
+    				<div class="date">
+    				  <span class="startDate">2023</span> 
+    					<span class="endDate">- 2025</span>
+    				</div>
+    			</header>
+    			
+    			<span class="location">
+    				<span class="fa fa-map-marker"></span> 
+    				<span class="countryCode">(DE)</span> 
+    				<span class="region">Thüringen</span> 
+    			</span>
+         	<div class="item" id="work-item-3-details">
+                <ul class="highlights">
+                    <li><p>Installation and Configuration of the Hardware and Software.</p></li>
+                    <li><p>Troubleshooting and maintenance.</p></li>
+                    <li><p>Managing IT inventory.</p></li>
+                    <li><p>Documentation of tasks.</p></li>
+                    <li><p>Managing and Troubleshooting of DaaS and VDI</p></li>
+                </ul>
+        	</div>
+        </section>
+ 
+        <section class="work-item">
+            <input id="work-item-2" type="checkbox" class="toggle-item" />
+            <label for="work-item-2"></label>
+    			<header>
+    				<div class="position"><button type="button" class="item-title-toggle" data-toggle="work-item-2" aria-expanded="false" aria-controls="work-item-2-details">Junior Android Developer</button></div>
     				<div class="company">iFrostByte Inc.</div>
     				<div class="date">
     				  <span class="startDate">2022</span> 
@@ -970,65 +1064,90 @@ ul.courses li:hover {
     				<span class="countryCode">(BD)</span> 
     				<span class="region">Dhaka</span> 
     			</span>
-         	<div class="item" id="work-item">
-            <ul class="highlights">
-                <li><p>Develop a personal finance management app (Cash Manager) designed to help users track their income, expenses, and savings. With a powerful visualisation tools, it simplifies financial management, allowing users to set budgets, analyse spending patterns, and achieve their financial goals.</p></li>
-            </ul>
+         	<div class="item" id="work-item-2-details">
+                <ul class="highlights">
+                    <li><p>Develop a personal finance management app (Cash Manager) designed to help users track their income, expenses, and savings. With a powerful visualisation tools, it simplifies financial management, allowing users to set budgets, analyse spending patterns, and achieve their financial goals.</p></li>
+                </ul>
         	</div>
         </section>
-        <section class="work-item">
-    
-            <input id="work-item-1" type="checkbox" class="toggle-item" />
-            <label for="work-item-1"></label>
-    
-    			<header>
-    				<div class="position">Summer Internship</div>
-    				<div class="company">Encoded Ltd</div>
-    				<div class="date">
-    				  <span class="startDate">May 2022</span> 
-    					<span class="endDate">- October 2022</span> 
-    				</div>
-    			</header>
-    			
-    			<span class="location">
-    				<span class="fa fa-map-marker"></span> 
-    				<span class="countryCode">(USA)</span> 
-    				<span class="region">Middletown</span> 
-    			</span>
-         	<div class="item" id="work-item">
-            <div class="summary">
-              <p><p>Worked on Wort Spiel</p></p>
-            </div>
-            <ul class="highlights">
-                <li><p>During my internship, I actively participated in the creation of "WORT Spiel, a educational app with a specific focus on helping users learn the German language through word pair matching.</p></li>
-            </ul>
-        	</div>
-        </section>
-      </section>
+        
+      </section >
     </section>
-<!--    -------------------------------------------------------------Published app-------------------------------------------------------------------------------      -->
+
+
+    <!--    -------------------------------------------------------------Published app-------------------------------------------------------------------------------      -->
 
     <section class="section margin1">
         <header>
-          <h2 class='section-title' class='section-title'>Published App <object type="image/svg+xml" data="https://upload.wikimedia.org/wikipedia/commons/7/7a/Google_Play_2022_logo.svg" ></object></h2>
+          <h2 class='section-title'>Published App <object type="image/svg+xml" data="https://upload.wikimedia.org/wikipedia/commons/7/7a/Google_Play_2022_logo.svg" ></object></h2>
         </header>
+
+
+
+        <section class="work-item">
+            <input id="publish-app-item-2" type="checkbox" class="toggle-item" />
+            <label for="publish-app-item-2"></label>
+
+            <header>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="publish-app-item-2" aria-expanded="false" aria-controls="publish-app-item-2-details">Notiz</button> <a aria-label="Open Notiz website" href="https://nazmos-sakib.github.io/Notiz-Android-App-website/" rel="noopener noreferrer" target="_blank"><span aria-hidden="true" class="fa fa-external-link"></span></a></div>
+                <div class="date">
+                    <span class="startDate">October 2026</span> 
+                </div>
+            </header>
+
+            <div class="item" id="publish-app-item-2-details">
+                <div class="summary">
+                    Notiz is an Android note-taking app for text, checklists, tables, images, audio, and drawings, with offline access and optional cloud synchronization.
+                </div>
+                <!-- IMAGE SLIDER -->
+                <div class="image-slider">
+                    <button class="slider-btn prev" onclick="moveSlide(this, -1)">&#10094;</button>
+
+                    <div class="slider-window">
+                        <div class="slider-track">
+                            <img src="assets/notiz/checklist.png" alt="Notiz screenshot 1">
+                            <img src="assets/notiz/table-note.jpg" alt="Notiz screenshot 2">
+                            <img src="assets/notiz/audio-note.jpg" alt="Notiz screenshot 3">
+                            <img src="assets/notiz/note.png" alt="Notiz screenshot 4">
+                            <img src="assets/notiz/notes.png" alt="Notiz screenshot 5">
+                            <img src="assets/notiz/image-note.jpg" alt="Notiz screenshot 6">
+                            <img src="assets/notiz/drawings-note.png" alt="Notiz screenshot 7">
+                        </div>
+                    </div>
+
+                    <button class="slider-btn next" onclick="moveSlide(this, 1)">&#10095;</button>
+                </div>
+            </div>
+        </section>
 
         <section class="work-item">
             <input id="publish-app-item-1" type="checkbox" class="toggle-item" />
             <label for="publish-app-item-1"></label>
 
             <header>
-                <div class="position"> 
-                    <a href="https://play.google.com/store/apps/details?id=com.wortgewandt&pli=1">Wort-Gewandt <span class="fa fa-external-link"></span></a>    
-                </div>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="publish-app-item-1" aria-expanded="false" aria-controls="publish-app-item-1-details">Wort-Gewandt</button> <a aria-label="Open Wort-Gewandt website" href="https://play.google.com/store/apps/details?id=com.wortgewandt&amp;pli=1" rel="noopener noreferrer" target="_blank"><span aria-hidden="true" class="fa fa-external-link"></span></a></div>
                 <div class="date">
                     <span class="startDate">May 2024</span> 
                 </div>
             </header>
 
-            <div class="item" id="work-item">
+            <div class="item" id="publish-app-item-1-details">
                 <div class="summary">
-                    Follow the link to Download from google play store. Details of the app can be found in <a href="https://github.com/nazmos-sakib/Wort-Gewandt">GitHub</a>
+                    Follow the link to Download from google play store. Details of the app can be found in <a href="https://github.com/nazmos-sakib/Wort-Gewandt" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+                <div class="image-slider">
+                    <button class="slider-btn prev" onclick="moveSlide(this, -1)">&#10094;</button>
+
+                    <div class="slider-window">
+                        <div class="slider-track">
+                            <img src="assets/wort-gewandt/1.jpeg" alt="wort-gewandt screenshot 1">
+                            <img src="assets/wort-gewandt/2.jpeg" alt="wort-gewandt screenshot 2">
+                            <img src="assets/wort-gewandt/3.jpeg" alt="wort-gewandt screenshot 3">
+                            <img src="assets/wort-gewandt/4.jpeg" alt="wort-gewandt screenshot 4"> 
+                        </div>
+                    </div>
+
+                    <button class="slider-btn next" onclick="moveSlide(this, 1)">&#10095;</button>
                 </div>
             </div>
         </section>
@@ -1040,8 +1159,277 @@ ul.courses li:hover {
 <!--    -------------------------------------------------------------Projects-------------------------------------------------------------------------------      -->
     <section class="section">
         <header>
-          <h2 class='section-title'>Projects <span class="item-count">(12)</span></h2>
+          <h2 class='section-title'>Projects <span class="item-count">(13 + 5 templates)</span></h2>
         </header>
+
+        <!-- PROJECT: Notiz -->
+        <section class="work-item">
+            <input id="project-notiz" type="checkbox" class="toggle-item" />
+            <label for="project-notiz"></label>
+
+            <header>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-notiz" aria-expanded="false" aria-controls="project-notiz-details">Notiz</button> <a aria-label="Open Notiz website" href="https://nazmos-sakib.github.io/Notiz-Android-App-website/" rel="noopener noreferrer" target="_blank"><span aria-hidden="true" class="fa fa-external-link"></span></a></div>
+                <div class="date">
+                    <span class="startDate">October 2026</span> 
+                </div>
+            </header>
+
+            <div class="item" id="project-notiz-details">
+                <div class="summary">
+                    Notiz is an offline-first Android app for creating and organizing notes with mixed content.
+                    <h3 class="project-subheading">Architecture</h3>
+                    <ul class="highlights">
+                        <li>Kotlin and Jetpack Compose UI with ViewModels, domain repository interfaces, and Hilt dependency injection.</li>
+                        <li>Room stores notes and content blocks locally; Kotlin Flow exposes changes through the repository layer.</li>
+                        <li>Optional Parse synchronization uses an outbox to track local changes while keeping notes available offline.</li>
+                    </ul>
+                    <h3 class="project-subheading">Development takeaways</h3>
+                    <ul class="highlights">
+                        <li>Separating UI state, domain models, and storage responsibilities in a growing Android app.</li>
+                        <li>Modeling text, checklists, tables, images, audio, and drawings as note content blocks.</li>
+                        <li>Managing local transactions, account-scoped data, and queued synchronization.</li>
+                        <li>Testing repository behavior and Room database migrations.</li>
+                        <li>Account authentication and cloud synchronization.</li>
+                        <li>Backend development with Parse Server and self-hosting.</li>
+                        <li>Docker and Microservice: hosting backend in a Raspberry PI with Docker</li>
+                        <li>Data protection, backups, and recovery.</li>
+                        <li>Setting up tunnel behind CGNAT</li>
+                        
+                    </ul>
+                </div>
+                <!-- IMAGE SLIDER -->
+                <div class="image-slider">
+                    <button class="slider-btn prev" onclick="moveSlide(this, -1)">&#10094;</button>
+
+                    <div class="slider-window">
+                        <div class="slider-track">
+                            <img src="assets/notiz/checklist.png" alt="Notiz screenshot 1">
+                            <img src="assets/notiz/table-note.jpg" alt="Notiz screenshot 2">
+                            <img src="assets/notiz/audio-note.jpg" alt="Notiz screenshot 3">
+                            <img src="assets/notiz/note.png" alt="Notiz screenshot 4">
+                            <img src="assets/notiz/notes.png" alt="Notiz screenshot 5">
+                            <img src="assets/notiz/image-note.jpg" alt="Notiz screenshot 6">
+                            <img src="assets/notiz/drawings-note.png" alt="Notiz screenshot 7">
+                        </div>
+                    </div>
+
+                    <button class="slider-btn next" onclick="moveSlide(this, 1)">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECT: WhisperNote -->
+        <section class="work-item">
+            <input id="project-template-1" type="checkbox" class="toggle-item" />
+            <label for="project-template-1"></label>
+
+            <header>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-template-1" aria-expanded="false" aria-controls="project-template-1-details">WhisperNote</button><a aria-label="Open Notiz website" href="https://nazmos-sakib.github.io/WhisperNote/" rel="noopener noreferrer" target="_blank"><span aria-hidden="true" class="fa fa-external-link"></span></a></div>
+                <div class="date">
+                    <span class="startDate">September 2026</span> 
+                </div>
+            </header>
+
+            <div class="item" id="project-template-1-details">
+                <div class="summary">
+                    Replace this with a brief explanation of the app and the problem it solves.
+                    <h3 class="project-subheading">Architecture</h3>
+                    <ul class="highlights">
+                        <li>On-device AI: Whisper transcription and offline translation.</li>
+                        <li>Audio processing: Recording, decoding, playback, and resampling.</li>
+                        <li>App architecture: ViewModels, StateFlow, SQLite, and background services.</li>
+                        <li>Reliability: Pause/resume, crash recovery, backups, and secure downloads.</li>
+                        <li>Quality assurance: Unit tests, UI tests, debugging, and performance checks.</li>
+                        <li></li>
+                    </ul>
+                <br/>
+                <p>Checkout<a href="https://github.com/nazmos-sakib/WhisperNote" target="_blank" rel="noopener noreferrer"> github</a></p>
+            
+                </div>
+                <!-- IMAGE SLIDER -->
+                <div class="image-slider">
+                    <button class="slider-btn prev" onclick="moveSlide(this, -1)">&#10094;</button>
+
+                    <div class="slider-window">
+                        <div class="slider-track">
+                            <img src="assets/WhisperNote/app-drawer.png" alt="app-drawer">
+                            <img src="assets/WhisperNote/home-screen.png" alt="home-screen">
+                            <img src="assets/WhisperNote/models.png" alt="models">
+                            <img src="assets/WhisperNote/translation.png" alt="translation">
+                            <img src="assets/WhisperNote/add-audio.png" alt="translation">
+                        </div>
+                    </div>
+
+                    <button class="slider-btn next" onclick="moveSlide(this, 1)">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECT TEMPLATE 2: edit title, date, description, and image paths; keep IDs unique. -->
+        <section class="work-item">
+            <input id="project-template-2" type="checkbox" class="toggle-item" />
+            <label for="project-template-2"></label>
+
+            <header>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-template-2" aria-expanded="false" aria-controls="project-template-2-details">Project template 2</button></div>
+                <div class="date">
+                    <span class="startDate">Month YYYY</span> 
+                </div>
+            </header>
+
+            <div class="item" id="project-template-2-details">
+                <div class="summary">
+                    Replace this with a brief explanation of the app and the problem it solves.
+                    <h3 class="project-subheading">What I learned</h3>
+                    <ul class="highlights">
+                        <li>On-device AI: Whisper transcription and offline translation.</li>
+                        <li>Audio processing: Recording, decoding, playback, and resampling.</li>
+                        <li>App architecture: ViewModels, StateFlow, SQLite, and background services.</li>
+                        <li>Reliability: Pause/resume, crash recovery, backups, and secure downloads.</li>
+                        <li>Quality assurance: Unit tests, UI tests, debugging, and performance checks.</li>
+                        <li></li>
+                    </ul>
+                </div>
+                <!-- IMAGE SLIDER -->
+                <div class="image-slider">
+                    <button class="slider-btn prev" onclick="moveSlide(this, -1)">&#10094;</button>
+
+                    <div class="slider-window">
+                        <div class="slider-track">
+                            <img src="assets/project-placeholders/screenshot-1.svg" alt="Project template 2: replace screenshot 1">
+                            <img src="assets/project-placeholders/screenshot-2.svg" alt="Project template 2: replace screenshot 2">
+                            <img src="assets/project-placeholders/screenshot-3.svg" alt="Project template 2: replace screenshot 3">
+                        </div>
+                    </div>
+
+                    <button class="slider-btn next" onclick="moveSlide(this, 1)">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECT TEMPLATE 3: edit title, date, description, and image paths; keep IDs unique. -->
+        <section class="work-item">
+            <input id="project-template-3" type="checkbox" class="toggle-item" />
+            <label for="project-template-3"></label>
+
+            <header>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-template-3" aria-expanded="false" aria-controls="project-template-3-details">Project template 3</button></div>
+                <div class="date">
+                    <span class="startDate">Month YYYY</span> 
+                </div>
+            </header>
+
+            <div class="item" id="project-template-3-details">
+                <div class="summary">
+                    Offline-first Android app for transcribing audio with Whisper, translating transcripts on-device, and listening with background playback. Built with Kotlin and Jetpack Compose.
+                    <h3 class="project-subheading">What I learned</h3>
+                    <ul class="highlights">
+                        <li>Describe a technical challenge and how you solved it.</li>
+                        <li>Add the skills, testing practices, or tradeoffs you learned.</li>
+                    </ul>
+                </div>
+                <!-- IMAGE SLIDER -->
+                <div class="image-slider">
+                    <button class="slider-btn prev" onclick="moveSlide(this, -1)">&#10094;</button>
+
+                    <div class="slider-window">
+                        <div class="slider-track">
+                            <img src="assets/project-placeholders/screenshot-1.svg" alt="Project template 3: replace screenshot 1">
+                            <img src="assets/project-placeholders/screenshot-2.svg" alt="Project template 3: replace screenshot 2">
+                            <img src="assets/project-placeholders/screenshot-3.svg" alt="Project template 3: replace screenshot 3">
+                        </div>
+                    </div>
+
+                    <button class="slider-btn next" onclick="moveSlide(this, 1)">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECT TEMPLATE 4: edit title, date, description, and image paths; keep IDs unique. -->
+        <section class="work-item">
+            <input id="project-template-4" type="checkbox" class="toggle-item" />
+            <label for="project-template-4"></label>
+
+            <header>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-template-4" aria-expanded="false" aria-controls="project-template-4-details">Project template 4</button></div>
+                <div class="date">
+                    <span class="startDate">Month YYYY</span> 
+                </div>
+            </header>
+
+            <div class="item" id="project-template-4-details">
+                <div class="summary">
+                    Replace this with a brief explanation of the app and the problem it solves.
+                    <h3 class="project-subheading">Architecture</h3>
+                    <ul class="highlights">
+                        <li>Describe the UI framework, architecture pattern, and main components.</li>
+                        <li>Explain storage, networking, and how data moves through the app.</li>
+                    </ul>
+                    <h3 class="project-subheading">What I learned</h3>
+                    <ul class="highlights">
+                        <li>Describe a technical challenge and how you solved it.</li>
+                        <li>Add the skills, testing practices, or tradeoffs you learned.</li>
+                    </ul>
+                </div>
+                <!-- IMAGE SLIDER -->
+                <div class="image-slider">
+                    <button class="slider-btn prev" onclick="moveSlide(this, -1)">&#10094;</button>
+
+                    <div class="slider-window">
+                        <div class="slider-track">
+                            <img src="assets/project-placeholders/screenshot-1.svg" alt="Project template 4: replace screenshot 1">
+                            <img src="assets/project-placeholders/screenshot-2.svg" alt="Project template 4: replace screenshot 2">
+                            <img src="assets/project-placeholders/screenshot-3.svg" alt="Project template 4: replace screenshot 3">
+                        </div>
+                    </div>
+
+                    <button class="slider-btn next" onclick="moveSlide(this, 1)">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECT TEMPLATE 5: edit title, date, description, and image paths; keep IDs unique. -->
+        <section class="work-item">
+            <input id="project-template-5" type="checkbox" class="toggle-item" />
+            <label for="project-template-5"></label>
+
+            <header>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-template-5" aria-expanded="false" aria-controls="project-template-5-details">Project template 5</button></div>
+                <div class="date">
+                    <span class="startDate">Month YYYY</span> 
+                </div>
+            </header>
+
+            <div class="item" id="project-template-5-details">
+                <div class="summary">
+                    Replace this with a brief explanation of the app and the problem it solves.
+                    <h3 class="project-subheading">Architecture</h3>
+                    <ul class="highlights">
+                        <li>Describe the UI framework, architecture pattern, and main components.</li>
+                        <li>Explain storage, networking, and how data moves through the app.</li>
+                    </ul>
+                    <h3 class="project-subheading">What I learned</h3>
+                    <ul class="highlights">
+                        <li>Describe a technical challenge and how you solved it.</li>
+                        <li>Add the skills, testing practices, or tradeoffs you learned.</li>
+                    </ul>
+                </div>
+                <!-- IMAGE SLIDER -->
+                <div class="image-slider">
+                    <button class="slider-btn prev" onclick="moveSlide(this, -1)">&#10094;</button>
+
+                    <div class="slider-window">
+                        <div class="slider-track">
+                            <img src="assets/project-placeholders/screenshot-1.svg" alt="Project template 5: replace screenshot 1">
+                            <img src="assets/project-placeholders/screenshot-2.svg" alt="Project template 5: replace screenshot 2">
+                            <img src="assets/project-placeholders/screenshot-3.svg" alt="Project template 5: replace screenshot 3">
+                        </div>
+                    </div>
+
+                    <button class="slider-btn next" onclick="moveSlide(this, 1)">&#10095;</button>
+                </div>
+            </div>
+        </section>
 
         <!--    ----------------Android-Esp32-BluetoothChat--------------------      -->
         <section class="work-item">
@@ -1049,14 +1437,14 @@ ul.courses li:hover {
             <label for="project-item-12"></label>
     
             <header>
-                <div class="position"> Android-Esp32-BluetoothChat</div>
-                <div class="company"> <a href="https://nazmos-sakib.github.io/Android-Esp32-BluetoothChat/" style="font-size: small;">More Details</a></div>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-item-12" aria-expanded="false" aria-controls="project-item-12-details">Android-Esp32-BluetoothChat</button></div>
+                <div class="company"> <a href="https://nazmos-sakib.github.io/Android-Esp32-BluetoothChat/" style="font-size: small;" target="_blank" rel="noopener noreferrer">More Details</a></div>
                 <div class="date">
                     <span class="startDate">Oct 2024</span> 
                 </div>
             </header>
     			
-         	<div class="item" id="work-item">
+         	<div class="item" id="project-item-12-details">
                 <div class="summary">
                 <p>What I have learned</p>
                 </div>
@@ -1075,7 +1463,7 @@ ul.courses li:hover {
                     <li>Corotine</li>
                 </ul>
                 <br/>
-                <p>Goto<a href="https://github.com/nazmos-sakib/Android-Esp32-BluetoothChat"> github</a></p>
+                <p>Goto<a href="https://github.com/nazmos-sakib/Android-Esp32-BluetoothChat" target="_blank" rel="noopener noreferrer"> github</a></p>
         	</div>
         </section>
         
@@ -1086,14 +1474,14 @@ ul.courses li:hover {
             <label for="project-item-11"></label>
     
             <header>
-                <div class="position"> BChat-chat-via-bluetooth---Android-App</div>
-                <div class="company"> <a href="https://nazmos-sakib.github.io/BChat-chat-via-bluetooth---Android-App/" style="font-size: small;">More Details</a></div>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-item-11" aria-expanded="false" aria-controls="project-item-11-details">BChat-chat-via-bluetooth---Android-App</button></div>
+                <div class="company"> <a href="https://nazmos-sakib.github.io/BChat-chat-via-bluetooth---Android-App/" style="font-size: small;" target="_blank" rel="noopener noreferrer">More Details</a></div>
                 <div class="date">
                     <span class="startDate">Jun 2024</span> 
                 </div>
             </header>
                 
-                <div class="item" id="work-item">
+                <div class="item" id="project-item-11-details">
                 <div class="summary">
                 <p>What I have learned</p>
                 </div>
@@ -1112,7 +1500,7 @@ ul.courses li:hover {
                     <li>Corotine</li>
                 </ul>
                 <br/>
-                <p>Goto<a href="https://github.com/nazmos-sakib/BChat-chat-via-bluetooth---Android-App"> github</a></p>
+                <p>Goto<a href="https://github.com/nazmos-sakib/BChat-chat-via-bluetooth---Android-App" target="_blank" rel="noopener noreferrer"> github</a></p>
             </div>
         </section>
 
@@ -1123,14 +1511,14 @@ ul.courses li:hover {
             <label for="project-item-10"></label>
     
             <header>
-                <div class="position"> News-360 </div>
-                <div class="company"> <a href="https://nazmos-sakib.github.io/News-360/" style="font-size: small;">More Details</a></div>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-item-10" aria-expanded="false" aria-controls="project-item-10-details">News-360</button></div>
+                <div class="company"> <a href="https://nazmos-sakib.github.io/News-360/" style="font-size: small;" target="_blank" rel="noopener noreferrer">More Details</a></div>
                 <div class="date">
                     <span class="startDate">Jul 2024</span> 
                 </div>
             </header>
                 
-                <div class="item" id="work-item">
+                <div class="item" id="project-item-10-details">
                 <div class="summary">
                 <p>What I have learned</p>
                 </div>
@@ -1145,7 +1533,7 @@ ul.courses li:hover {
                     <li>Corotine</li>
                 </ul>
                 <br/>
-                <p>Goto<a href="https://github.com/nazmos-sakib/News-360"> github</a></p>
+                <p>Goto<a href="https://github.com/nazmos-sakib/News-360" target="_blank" rel="noopener noreferrer"> github</a></p>
             </div>
         </section>
         
@@ -1156,14 +1544,14 @@ ul.courses li:hover {
             <label for="project-item-9"></label>
     
             <header>
-                <div class="position"> Timer with Jetpack Composer</div>
-                <div class="company"> <a href="https://nazmos-sakib.github.io/Timer-with-Jetpack-Composser/" style="font-size: small;">More Details</a></div>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-item-9" aria-expanded="false" aria-controls="project-item-9-details">Timer with Jetpack Composer</button></div>
+                <div class="company"> <a href="https://nazmos-sakib.github.io/Timer-with-Jetpack-Composser/" style="font-size: small;" target="_blank" rel="noopener noreferrer">More Details</a></div>
                 <div class="date">
                     <span class="startDate">Jun 2024</span> 
                 </div>
             </header>
     			
-         	<div class="item" id="work-item">
+         	<div class="item" id="project-item-9-details">
                 <div class="summary">
                 <p>What I have learned</p>
                 </div>
@@ -1173,7 +1561,7 @@ ul.courses li:hover {
                     <li>LaunchedEffect</li>
                 </ul>
                 <br/>
-                <p>Goto<a href="https://github.com/nazmos-sakib/Timer-with-Jetpack-Composser"> github</a></p>
+                <p>Goto<a href="https://github.com/nazmos-sakib/Timer-with-Jetpack-Composser" target="_blank" rel="noopener noreferrer"> github</a></p>
         	</div>
         </section>
 
@@ -1183,14 +1571,14 @@ ul.courses li:hover {
             <label for="project-item-1"></label>
     
             <header>
-                <div class="position"> Uber-Clone</div>
-                <div class="company"> <a href="https://nazmos-sakib.github.io/uber-clone/" style="font-size: small;">More Details</a></div>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-item-1" aria-expanded="false" aria-controls="project-item-1-details">Uber-Clone</button></div>
+                <div class="company"> <a href="https://nazmos-sakib.github.io/uber-clone/" style="font-size: small;" target="_blank" rel="noopener noreferrer">More Details</a></div>
                 <div class="date">
                     <span class="startDate">May 2024</span> 
                 </div>
             </header>
     			
-         	<div class="item" id="work-item">
+         	<div class="item" id="project-item-1-details">
                 <div class="summary">
                 <p>What I have learned</p>
                 </div>
@@ -1214,14 +1602,14 @@ ul.courses li:hover {
             <label for="project-item-2"></label>
     
             <header>
-                <div class="position"> Wort-Gewandt</div>
-                <div class="company"> <a href="https://nazmos-sakib.github.io/Wort-Gewandt/" style="font-size: small;" >More Details</a></div>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-item-2" aria-expanded="false" aria-controls="project-item-2-details">Wort-Gewandt</button></div>
+                <div class="company"> <a href="https://nazmos-sakib.github.io/Wort-Gewandt/" style="font-size: small;" target="_blank" rel="noopener noreferrer">More Details</a></div>
                 <div class="date">
                     <span class="startDate">April 2024</span> 
                 </div>
             </header>
     			
-         	<div class="item" id="work-item">
+         	<div class="item" id="project-item-2-details">
                 <div class="summary">
                 <p>What I have learned</p>
                 </div>
@@ -1252,14 +1640,14 @@ ul.courses li:hover {
             <label for="project-item-3"></label>
     
             <header>
-                <div class="position"> AmbientIQ</div>
-                <div class="company"> <a href="https://nazmos-sakib.github.io/AmbientIQ/" style="font-size: small;">More Details</a></div>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-item-3" aria-expanded="false" aria-controls="project-item-3-details">AmbientIQ</button></div>
+                <div class="company"> <a href="https://nazmos-sakib.github.io/AmbientIQ/" style="font-size: small;" target="_blank" rel="noopener noreferrer">More Details</a></div>
                 <div class="date">
                     <span class="startDate">Jan 2024</span> 
                 </div>
             </header>
     			
-         	<div class="item" id="work-item">
+         	<div class="item" id="project-item-3-details">
                 <div class="summary">
                 <p>What I have learned</p>
                 </div>
@@ -1281,14 +1669,14 @@ ul.courses li:hover {
             <label for="project-item-4"></label>
     
             <header>
-                <div class="position"> TrinkBrunnen</div>
-                <div class="company"> <a href="https://nazmos-sakib.github.io/TrinkBrunnen/" style="font-size: small;" >More Details</a></div>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-item-4" aria-expanded="false" aria-controls="project-item-4-details">TrinkBrunnen</button></div>
+                <div class="company"> <a href="https://nazmos-sakib.github.io/TrinkBrunnen/" style="font-size: small;" target="_blank" rel="noopener noreferrer">More Details</a></div>
                 <div class="date">
                     <span class="startDate">Jul 2023</span> 
                 </div>
             </header>
     			
-         	<div class="item" id="work-item">
+         	<div class="item" id="project-item-4-details">
                 <div class="summary">
                 <p>What I have learned</p>
                 </div>
@@ -1314,14 +1702,14 @@ ul.courses li:hover {
             <label for="project-item-5"></label>
     
             <header>
-                <div class="position"> WortSpeil</div>
-                <div class="company"> <a href="https://nazmos-sakib.github.io/WortSpiel/" style="font-size: small;" >More Details</a></div>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-item-5" aria-expanded="false" aria-controls="project-item-5-details">WortSpeil</button></div>
+                <div class="company"> <a href="https://nazmos-sakib.github.io/WortSpiel/" style="font-size: small;" target="_blank" rel="noopener noreferrer">More Details</a></div>
                 <div class="date">
                     <span class="startDate">May 2022</span> 
                 </div>
             </header>
     			
-         	<div class="item" id="work-item">
+         	<div class="item" id="project-item-5-details">
                 <div class="summary">
                 <p>What I have learned</p>
                 </div>
@@ -1338,14 +1726,14 @@ ul.courses li:hover {
             <label for="project-item-6"></label>
     
             <header>
-                <div class="position"> CashManager</div>
-                <div class="company"> <a href="https://nazmos-sakib.github.io/CashManager/" style="font-size: small;" >More Details</a></div>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-item-6" aria-expanded="false" aria-controls="project-item-6-details">CashManager</button></div>
+                <div class="company"> <a href="https://nazmos-sakib.github.io/CashManager/" style="font-size: small;" target="_blank" rel="noopener noreferrer">More Details</a></div>
                 <div class="date">
                     <span class="startDate">Mar 2023</span> 
                 </div>
             </header>
     			
-         	<div class="item" id="work-item">
+         	<div class="item" id="project-item-6-details">
                 <div class="summary">
                 <p>What I have learned</p>
                 </div>
@@ -1369,14 +1757,14 @@ ul.courses li:hover {
             <label for="project-item-7"></label>
     
             <header>
-                <div class="position">GPS_Speed_Meter</div>
-                <div class="company"> <a href="https://nazmos-sakib.github.io/GPS_Speed_Meter/" style="font-size: small;" >More Details</a></div>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-item-7" aria-expanded="false" aria-controls="project-item-7-details">GPS_Speed_Meter</button></div>
+                <div class="company"> <a href="https://nazmos-sakib.github.io/GPS_Speed_Meter/" style="font-size: small;" target="_blank" rel="noopener noreferrer">More Details</a></div>
                 <div class="date">
                     <span class="startDate">Apr 2023</span> 
                 </div>
             </header>
     			
-         	<div class="item" id="work-item">
+         	<div class="item" id="project-item-7-details">
                 <div class="summary">
                 <p>What I have learned</p>
                 </div>
@@ -1392,14 +1780,14 @@ ul.courses li:hover {
             <label for="project-item-8"></label>
     
             <header>
-                <div class="position">CoinPaprikaAPI</div>
-                <div class="company"> <a href="https://nazmos-sakib.github.io/CoinPaprikaAPIJava/" style="font-size: small;" >More Details</a></div>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-item-8" aria-expanded="false" aria-controls="project-item-8-details">CoinPaprikaAPI</button></div>
+                <div class="company"> <a href="https://nazmos-sakib.github.io/CoinPaprikaAPIJava/" style="font-size: small;" target="_blank" rel="noopener noreferrer">More Details</a></div>
                 <div class="date">
                     <span class="startDate">Apr 2023</span> 
                 </div>
             </header>
     			
-         	<div class="item" id="work-item">
+         	<div class="item" id="project-item-8-details">
                 <div class="summary">
                 <p>What I have learned</p>
                 </div>
@@ -1421,7 +1809,7 @@ ul.courses li:hover {
 
 
 
-
+<!--    -------------------------------- Education --------------------      -->
 
     <section class="section">
       <header>
@@ -1433,14 +1821,16 @@ ul.courses li:hover {
           <header>
             <div class="header-left">
               <div class="studyType">
-                M.Sc in Applied Computer Science,
+                M.Sc in Applied
               </div>
               <div class="area">
                 Computer Science
               </div>
               <div class="institution">
-                <a href="https://www.hs-schmalkalden.de/">Hochhschule Schmalkalden</a>
-              </div>
+                <span class="publisher">
+                    <a href="https://www.hs-schmalkalden.de/" target="_blank" rel="noopener noreferrer">Hochhschule Schmalkalden</a>
+                </span>
+                </div>
             </div>
             <div class="date">
               <span class="startDate">
@@ -1466,13 +1856,10 @@ ul.courses li:hover {
           <header>
             <div class="header-left">
               <div class="studyType">
-                B.Sc in Computer Science and Engineering,
-              </div>
-              <div class="area">
-                Computer Science
-              </div>
+                B.Sc in Computer Science and Engineering
+              </div> 
               <div class="institution">
-                <a href="https://www.nwu.edu.bd/"> North Western University</a>
+                <a href="https://www.nwu.edu.bd/" target="_blank" rel="noopener noreferrer"> North Western University</a>
               </div>
             </div>
             <div class="date">
@@ -1497,6 +1884,54 @@ ul.courses li:hover {
         </section>
       </section>
     </section>
+
+    <!--    --------------------------------Thesis--------------------      -->    
+
+    <section class="section">
+      <header>
+        <h2 class='section-title'>Thesis <span class="item-count">(2)</span></h2>
+      </header>
+
+      <section id="thesis2">
+        <article class="thesis-item">
+          <header class="thesis-header">
+            <div>
+              <span class="thesis-degree">Master’s thesis</span>
+              <h3 class="thesis-title">PERFORMANCE EVALUATION OF ON-DEVICE AI FRAMEWORKS FOR REAL-TIME GESTURE RECOGNITION: A CASE STUDY IN MOBILE ROBOT CONTROL</h3>
+              <div class="thesis-institute">
+                <a href="https://www.hs-schmalkalden.de/" target="_blank" rel="noopener noreferrer">Hochschule Schmalkalden</a>
+              </div>
+            </div>
+            <time class="thesis-year" datetime="2026">2026</time>
+          </header>
+          <details class="thesis-description" open>
+            <summary>Description</summary>
+            <p>Thesis focuses on comparing different AI frameworks for real-time gesture recognition on Android devices. I developed an Android application that recognizes human body gestures using AI/Yolo26 and uses them to control a robot via Bluetooth. The study compares TensorFlow Lite, ONNX Runtime, PyTorch Mobile, and NCNN, focusing on processing speed, CPU and memory usage, and overall response time to determine which framework performs best on mobile devices.</p>
+          </details>
+        </article>
+
+        <article class="thesis-item">
+          <header class="thesis-header">
+            <div>
+              <span class="thesis-degree">Bachelor’s thesis</span>
+              <h3 class="thesis-title">
+                <a href="https://link.springer.com/chapter/10.1007/978-981-16-0586-4_22" target="_blank" rel="noopener noreferrer">Smartphone-Based Heart Attack Prediction Using Artificial Neural Network</a>
+              </h3>
+              <div class="thesis-institute">
+                <a href="https://www.nwu.edu.bd/" target="_blank" rel="noopener noreferrer">North Western University, Bangladesh</a>
+              </div>
+            </div>
+            <time class="thesis-year" datetime="2021">2021</time>
+          </header>
+          <details class="thesis-description" open>
+            <summary>Description</summary>
+            <p>To predict the risk of Heart Attack using smart phone an android based prototype software has been developed. Integrating clinical data collected from 834 patients has been analyzed and correlated with 14 risk factor. Using Artificial Neural network and Nadam optimizer, our team was able to train a model that can predict Heart Attack with 92 percent accuracy.</p>
+          </details>
+        </article>
+      </section>
+    </section>
+
+<!--    --------------------------------Publications--------------------      -->    
     <section class="section">
       <header>
         <h2 class='section-title'>Publications</h2>
@@ -1506,11 +1941,11 @@ ul.courses li:hover {
             <input id="publication-item-0" type="checkbox" class="toggle-item" checked="checked" />
             <label for="publication-item-0"></label>
     
-          <header>
+          <header class="clear">
             <div class="header-left">
               <span class="name">
               <span class="website">
-              <a target="_blank" href="https://link.springer.com/chapter/10.1007/978-981-16-0586-4_22">Smartphone-Based Heart Attack Prediction Using Artificial Neural Network</a>
+              <a href="https://link.springer.com/chapter/10.1007/978-981-16-0586-4_22" target="_blank" rel="noopener noreferrer">Smartphone-Based Heart Attack Prediction Using Artificial Neural Network</a>
               </span>
               </span>
               <span class="publisher">
@@ -1524,14 +1959,15 @@ ul.courses li:hover {
     
           <div class="item">  
             <div class="summary">
-              <p> <p><br>Using Artificial Neural network, our team was able to train a model that can predict Heart Attack with 92 percent accuracy. 
-            </p>
+              <p>Using Artificial Neural network, our team was able to train a model that can predict Heart Attack with 92 percent accuracy. 
             </p>
             </div>
           </div>
         </section>
       </section>
     </section>
+
+<!--    --------------------------------Languages--------------------      -->    
     <section class="section margin1">
       <header>
         <h2 class='section-title'>Languages</h2>
@@ -1553,8 +1989,8 @@ ul.courses li:hover {
             Deutsch
           </h3>
           <div class="item">
-            <div class="level intermediate fluency a2">
-              <em>A2</em>
+            <div class="level advance fluency b2">
+              <em>B2</em>
               <div class="bar"></div>
             </div>
           </div>
@@ -1577,14 +2013,14 @@ ul.courses li:hover {
 <!--    -------------------------------------------------------------Jetpack Compose Designs--------------------------------------------------------------------      -->
 <section class="section margin1">
     <header>
-      <h2 class='section-title' class='section-title'>Jetpack Composer UI Design</h2>
+      <h2 class='section-title'>Jetpack Composer UI Design</h2>
     </header>
 </section>  
 
 <div class="card-container" style="margin-left: -20%; margin-right: -20%;">
 
     <div class="card">
-        <a href="https://github.com/nazmos-sakib/parallax-scrolleffect-in-jetpackcompose">
+        <a href="https://github.com/nazmos-sakib/parallax-scrolleffect-in-jetpackcompose" target="_blank" rel="noopener noreferrer">
             <img class="parallax-scrolleffect" src="assets/Jetpack-UI/parallax-scroll-effect/ss_gif.gif" alt="">
             <div class="card-content">
                 <h3>parallax-scrolleffect</h3>
@@ -1596,7 +2032,7 @@ ul.courses li:hover {
 
 
     <div class="card">
-        <a href="https://github.com/nazmos-sakib/Jetpack-homepage-design">
+        <a href="https://github.com/nazmos-sakib/Jetpack-homepage-design" target="_blank" rel="noopener noreferrer">
             <img class="homepage-design" src="assets/Jetpack-UI/homepage-design/img1.jpeg" alt="">
             <div class="card-content">
                 <h3>Homepage Design</h3>
@@ -1609,7 +2045,7 @@ ul.courses li:hover {
 
 
     <div class="card">
-        <a href="https://github.com/nazmos-sakib/instagram-Profile-UI-Jetpack-Composer">
+        <a href="https://github.com/nazmos-sakib/instagram-Profile-UI-Jetpack-Composer" target="_blank" rel="noopener noreferrer">
             <img class="instagram-profile-design" src="assets/Jetpack-UI/Instagram/ss01.png" alt="">
             <div class="card-content">
                 <h3>Instagram profile page</h3>
@@ -1622,7 +2058,7 @@ ul.courses li:hover {
 
 
     <div class="card">
-        <a href="https://github.com/nazmos-sakib/Bottom-Navigation-With-Badges-in-Jetpack">
+        <a href="https://github.com/nazmos-sakib/Bottom-Navigation-With-Badges-in-Jetpack" target="_blank" rel="noopener noreferrer">
             <img class="Jetpack-Draggable-Music-Knob" src="assets/Jetpack-UI/dragable-music-knob/knob.gif" alt="">
             <div class="card-content">
                 <h3>Dragable Music Knob</h3>
@@ -1634,7 +2070,7 @@ ul.courses li:hover {
 
 
     <div class="card">
-        <a href="https://github.com/nazmos-sakib/Jetpack-Draggable-Music-Knob">
+        <a href="https://github.com/nazmos-sakib/Jetpack-Draggable-Music-Knob" target="_blank" rel="noopener noreferrer">
             <img class="Jetpack-Draggable-Music-Knob" src="assets/Jetpack-UI/Bottom-nav-with-batch/ss_01.gif" alt="">
             <div class="card-content">
                 <h3>Bottom Navigation with notification Batch</h3>
@@ -1646,7 +2082,7 @@ ul.courses li:hover {
 
 
     <div class="card">
-        <a href="https://github.com/nazmos-sakib/Animated-Text-Count">
+        <a href="https://github.com/nazmos-sakib/Animated-Text-Count" target="_blank" rel="noopener noreferrer">
             <img class="Animated-Text-Count" src="assets/Jetpack-UI/animated-text-count/animated-text-count.gif" alt="">
             <div class="card-content">
                 <h3>Animated Text Count</h3>
@@ -1663,7 +2099,7 @@ ul.courses li:hover {
 <!--    -------------------------------------------------------------Android Apps-------------------------------------------------------------------------------      -->
     <section class="section ">
         <header>
-            <h2 class='section-title' class='section-title'>Android Apps</h2>
+            <h2 class='section-title'>Android Apps</h2>
           </header>
     </section>
           
@@ -1671,7 +2107,7 @@ ul.courses li:hover {
 
 
                 <div class="card-without-width">
-                    <a href="https://nazmos-sakib.github.io/Android-Esp32-BluetoothChat/">
+                    <a href="https://nazmos-sakib.github.io/Android-Esp32-BluetoothChat/" target="_blank" rel="noopener noreferrer">
                         <img class="android-esp32-chat-app" src="assets/android-esp32-chat-app/ss_demo.gif" alt="">
                         <div class="card-content">
                             <h3>Android ESP 32 Bluetooth APP</h3>
@@ -1683,7 +2119,7 @@ ul.courses li:hover {
 
 
                 <div class="card">
-                    <a href="https://nazmos-sakib.github.io/News-360/">
+                    <a href="https://nazmos-sakib.github.io/News-360/" target="_blank" rel="noopener noreferrer">
                         <img class="news-360" src="assets/news-360/ss1.gif" alt="">
                         <div class="card-content">
                             <h3>News 360</h3>
@@ -1696,7 +2132,7 @@ ul.courses li:hover {
 
 
                 <div class="card-without-width">
-                    <a href="https://nazmos-sakib.github.io/BChat-chat-via-bluetooth---Android-App/">
+                    <a href="https://nazmos-sakib.github.io/BChat-chat-via-bluetooth---Android-App/" target="_blank" rel="noopener noreferrer">
                         <img class="bChat" src="assets/bChat/ss_demo.gif" alt="">
                         <div class="card-content">
                             <h3>Bluetooth Chat App</h3>
@@ -1709,7 +2145,7 @@ ul.courses li:hover {
 
 
                 <div class="card">
-                    <a href="https://nazmos-sakib.github.io/Timer-with-Jetpack-Composser/">
+                    <a href="https://nazmos-sakib.github.io/Timer-with-Jetpack-Composser/" target="_blank" rel="noopener noreferrer">
                         <img class="Jetpack-Draggable-Music-Knob" src="assets/Timer-jetpack/timer.gif" alt="">
                         <div class="card-content">
                             <h3>Timer-with-Jetpack-Composser</h3>
@@ -1721,7 +2157,7 @@ ul.courses li:hover {
 
 
                 <div class="card">
-                    <a href="https://nazmos-sakib.github.io/Wort-Gewandt/">
+                    <a href="https://nazmos-sakib.github.io/Wort-Gewandt/" target="_blank" rel="noopener noreferrer">
                         <img class="Wortgewandt" src="assets/wort-gewandt/1.jpeg" alt="">
                         <div class="card-content">
                             <h3>Wortgewandt</h3>
@@ -1735,7 +2171,7 @@ ul.courses li:hover {
                 </div>
 
                 <div class="card">
-                    <a href="https://nazmos-sakib.github.io/AmbientIQ/">
+                    <a href="https://nazmos-sakib.github.io/AmbientIQ/" target="_blank" rel="noopener noreferrer">
                         <img class="ambient-iq" src="assets/ambient-iq/1.png" alt="">
                         <div class="card-content">
                             <h3>AmbientIQ</h3>
@@ -1749,7 +2185,7 @@ ul.courses li:hover {
                 </div>
 
                 <div class="card">
-                    <a href="https://nazmos-sakib.github.io/TrinkBrunnen/">
+                    <a href="https://nazmos-sakib.github.io/TrinkBrunnen/" target="_blank" rel="noopener noreferrer">
                         <img class="Trinkbrunen" src="assets/Trinkenbrunen/1.png" alt="">
                         <div class="card-content">
                             <h3>TrinkBrunnen</h3>
@@ -1763,7 +2199,7 @@ ul.courses li:hover {
                 </div>
 
                 <div class="card">
-                    <a href="https://nazmos-sakib.github.io/WortSpiel/">
+                    <a href="https://nazmos-sakib.github.io/WortSpiel/" target="_blank" rel="noopener noreferrer">
                         <img class="WortSpiel" src="assets/wort-spiel/1.jpeg" alt="">
                         <div class="card-content">
                             <h3>WortSpiel</h3>
@@ -1777,7 +2213,7 @@ ul.courses li:hover {
                 </div>
 
                 <div class="card">
-                    <a href="https://nazmos-sakib.github.io/CashManager/">
+                    <a href="https://nazmos-sakib.github.io/CashManager/" target="_blank" rel="noopener noreferrer">
                         <img class="CashManager" src="assets/cash-manager/1.png" alt="">
                         <div class="card-content">
                             <h3>
@@ -1793,7 +2229,7 @@ ul.courses li:hover {
                 </div>
 
                 <div class="card">
-                    <a href="https://nazmos-sakib.github.io/CoinPaprikaAPIJava/">
+                    <a href="https://nazmos-sakib.github.io/CoinPaprikaAPIJava/" target="_blank" rel="noopener noreferrer">
                         <img class="CoinPaprikaAPI" src="assets/CoinPaprikaAPIJava/1.jpeg" alt="">
                         <div class="card-content">
                             <h3>CoinPaprikaAPI</h3>
@@ -1807,7 +2243,7 @@ ul.courses li:hover {
                 </div>
 
                 <div class="card">
-                    <a href="https://nazmos-sakib.github.io/Brain-Trainer/">
+                    <a href="https://nazmos-sakib.github.io/Brain-Trainer/" target="_blank" rel="noopener noreferrer">
                         <img class="brain-trainer" src="assets/brain-trainer/img1.png" alt="">
                         <div class="card-content">
                             <h3>Brain Trainer</h3>
@@ -1825,27 +2261,10 @@ ul.courses li:hover {
 
             </div> 
 
-    <section class="section margin1">
-      <header>
-        <!--  h2 class='section-title' class='section-title'>Interests</h2 -->
-      </header>
-      <section id="interests">
-        <div class="item">
-          <h3 class="name">
-            
-          </h3>
-          <div class="summary">
-            <p><p>
-
-            </p></p>
-          </div>
-      </section>
-    </section>
-
-
+  </div>
 
     <script>
-        const wortgewandt_images = ["assets/wort-gewandt/1.jpeg", "assets/wort-gewandt/2.jpeg","assets/wort-gewandt/3.jpeg","assets/wort-gewandt/4.jpeg"]; // Replace with your image URLs
+        const wortgewandt_images = ["assets/wort-gewandt/1.jpeg", "assets/wort-gewandt/2.jpeg","assets/wort-gewandt/3.jpeg","assets/wort-gewandt/4.jpeg"]; 
         let wortgewandt_index = 0;
 
         const cash_manager_images = ["assets/cash-manager/1.png","assets/cash-manager/2.png","assets/cash-manager/3.png","assets/cash-manager/4.png","assets/cash-manager/5.png","assets/cash-manager/6.png","assets/cash-manager/7.png","assets/cash-manager/8.png"];
@@ -1890,11 +2309,130 @@ ul.courses li:hover {
           brain_trainer_index = (brain_trainer_index + 1) % brain_trainer_images.length;
         }
       
-        setInterval(changeImage, 2000); // Change image every 3 seconds
+        setInterval(changeImage, 2000); // Change image every 2 seconds
       </script>
 
+    
+    <script>
+        /*
+            publish app screenshot slide show
+        */
+
+        function getVisibleImages() {
+            if (window.innerWidth <= 600) {
+                return 1;
+            }
+
+            if (window.innerWidth <= 900) {
+                return 2;
+            }
+
+            return 3;
+        }
 
 
+        function moveSlider(slider, direction) {
+
+            const track = slider.querySelector(".slider-track");
+            const images = track.querySelectorAll("img");
+
+            const visibleImages = getVisibleImages();
+            const maxSlide = Math.max(0, images.length - visibleImages);
+
+            let currentSlide =
+                parseInt(slider.dataset.slide || "0");
+
+            currentSlide += direction;
+
+            /* Go back to beginning after last image */
+            if (currentSlide > maxSlide) {
+                currentSlide = 0;
+            }
+
+            /* Go to end when clicking left from beginning */
+            if (currentSlide < 0) {
+                currentSlide = maxSlide;
+            }
+
+            slider.dataset.slide = currentSlide;
+
+            const imageWidth = 100 / visibleImages;
+
+            track.style.transform =
+                `translateX(-${currentSlide * imageWidth}%)`;
+        }
+
+
+        /* Manual arrow buttons */
+        function moveSlide(button, direction) {
+
+            const slider = button.closest(".image-slider");
+
+            moveSlider(slider, direction);
+        }
+
+
+        /* Automatic sliding every 3 seconds */
+        setInterval(function () {
+
+            const sliders = document.querySelectorAll(".image-slider");
+
+            sliders.forEach(function (slider) {
+                moveSlider(slider, 1);
+            });
+
+        }, 3000);
+
+
+        /* Reset sliders if browser size changes */
+        window.addEventListener("resize", function () {
+
+            const sliders = document.querySelectorAll(".image-slider");
+
+            sliders.forEach(function (slider) {
+
+                slider.dataset.slide = 0;
+
+                const track = slider.querySelector(".slider-track");
+
+                track.style.transform = "translateX(0)";
+            });
+
+        });
+        /*
+            end:: publish app screenshot slide show
+        */
+
+    </script>
+    
+
+
+
+    <script>
+        document.querySelectorAll('.item-title-toggle').forEach(function (button) {
+            const checkbox = document.getElementById(button.dataset.toggle);
+
+            function syncExpanded() {
+                button.setAttribute('aria-expanded', String(checkbox.checked));
+            }
+
+            button.addEventListener('click', function () {
+                checkbox.checked = !checkbox.checked;
+                syncExpanded();
+            });
+            if (checkbox.id.startsWith('work-item-') || checkbox.id.startsWith('publish-app-item-')) {
+                const header = button.closest('header');
+                header.classList.add('item-row-toggle');
+                header.addEventListener('click', function (event) {
+                    if (!event.target.closest('a, button')) {
+                        button.click();
+                    }
+                });
+            }
+            checkbox.addEventListener('change', syncExpanded);
+            syncExpanded();
+        });
+    </script>
 
   </body>
 </html>
