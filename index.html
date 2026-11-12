@@ -441,6 +441,25 @@ ul.keywords li:hover {
     font-weight: 600;
 }
 
+.robot-demo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.robot-demo-grid video {
+    display: block;
+    width: 100%;
+    border-radius: 6px;
+    background: #111;
+}
+
+@media (max-width: 600px) {
+    .robot-demo-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Thesis entries */
 .thesis-item {
     margin: .7rem 0 1.3rem;
@@ -616,6 +635,10 @@ Notiz screenshot slide show
 
     border-radius: 6px;
     object-fit: cover;
+}
+
+.slider-track img.show-full-image {
+    object-fit: contain;
 }
 
 .slider-btn {
@@ -1085,7 +1108,7 @@ end:: Notiz screenshot slide show
 
 
         <section class="work-item">
-            <input id="publish-app-item-2" type="checkbox" class="toggle-item" />
+            <input id="publish-app-item-2" type="checkbox" class="toggle-item" checked/>
             <label for="publish-app-item-2"></label>
 
             <header>
@@ -1159,8 +1182,96 @@ end:: Notiz screenshot slide show
 <!--    -------------------------------------------------------------Projects-------------------------------------------------------------------------------      -->
     <section class="section">
         <header>
-          <h2 class='section-title'>Projects <span class="item-count">(13 + 5 templates)</span></h2>
+          <h2 class='section-title'>Projects <span class="item-count">(17 template)</span></h2>
         </header>
+
+        <!-- 
+        < !-- PROJECT TEMPLATE 2: edit title, date, description, and image paths; keep IDs unique. -- >
+        <section class="work-item">
+            <input id="project-template-2" type="checkbox" class="toggle-item" />
+            <label for="project-template-2"></label>
+
+            <header>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-template-2" aria-expanded="false" aria-controls="project-template-2-details">Project template 2</button></div>
+                <div class="date">
+                    <span class="startDate">Month YYYY</span> 
+                </div>
+            </header>
+
+            <div class="item" id="project-template-2-details">
+                <div class="summary">
+                    Replace this with a brief explanation of the app and the problem it solves.
+                    <h3 class="project-subheading">What I learned</h3>
+                    <ul class="highlights">
+                        <li>On-device AI: Whisper transcription and offline translation.</li>
+                        <li>Audio processing: Recording, decoding, playback, and resampling.</li>
+                        <li>App architecture: ViewModels, StateFlow, SQLite, and background services.</li>
+                        <li>Reliability: Pause/resume, crash recovery, backups, and secure downloads.</li>
+                        <li>Quality assurance: Unit tests, UI tests, debugging, and performance checks.</li>
+                        <li></li>
+                    </ul>
+                </div>
+                < !-- IMAGE SLIDER -- >
+                <div class="image-slider">
+                    <button class="slider-btn prev" onclick="moveSlide(this, -1)">&#10094;</button>
+
+                    <div class="slider-window">
+                        <div class="slider-track">
+                            <img src="assets/project-placeholders/screenshot-1.svg" alt="Project template 2: replace screenshot 1">
+                            <img src="assets/project-placeholders/screenshot-2.svg" alt="Project template 2: replace screenshot 2">
+                            <img src="assets/project-placeholders/screenshot-3.svg" alt="Project template 2: replace screenshot 3">
+                        </div>
+                    </div>
+
+                    <button class="slider-btn next" onclick="moveSlide(this, 1)">&#10095;</button>
+                </div>
+            </div>
+        </section>
+        -->
+
+        <!-- PROJECT: Jog-the-Robot -->
+        <section class="work-item">
+            <input id="project-jog-the-robot" type="checkbox" class="toggle-item" checked />
+            <label for="project-jog-the-robot"></label>
+            <header>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-jog-the-robot" aria-expanded="true" aria-controls="project-jog-the-robot-details">Jog-the-Robot</button> <a href="https://nazmos-sakib.github.io/Jog-the-Robot/" target="_blank" rel="noopener noreferrer" aria-label="Open Jog-the-Robot website"><span class="fa fa-external-link" aria-hidden="true"></span></a></div>
+                <div class="date"><span class="startDate">November 2026</span></div>
+            </header>
+            <div class="item" id="project-jog-the-robot-details">
+                <div class="summary">
+                    <p>An Android app for jogging a five-axis robot arm using touch controls or body gestures. Built with Kotlin and Jetpack Compose, it connects over BLE to an ESP32-S3-ETH bridge, which exchanges commands and status with a B&amp;R X20 PLC over Modbus TCP.</p>
+                    <h3 class="project-subheading">What I learned</h3>
+                    <ul class="highlights">
+                        <li>Connecting Android, an ESP32 microcontroller, and a PLC into a complete robot-control system, with live status flowing back to the app.</li>
+                        <li>Working with BLE GATT notifications and buffering newline-delimited commands across fragmented Bluetooth packets.</li>
+                        <li>Bridging BLE commands to Modbus TCP registers over Ethernet and coordinating power, homing, and jogging with a PLC state machine in B&amp;R Structured Text.</li>
+                        <li>Using CameraX, ONNX Runtime, and a YOLO pose model to turn body keypoints into axis selection and directional jog commands.</li>
+                        <li>Handling stop-on-release, communication timeouts, heartbeat watchdogs, and readiness checks across the app, firmware, and PLC.</li>
+                    </ul>
+                    <p><a href="#plc-microcontroller-project">Watch the two robot-control demos</a> · <a href="https://nazmos-sakib.github.io/Jog-the-Robot/" target="_blank" rel="noopener noreferrer">Project details</a></p>
+                </div>
+                <div class="image-slider">
+                    <button type="button" class="slider-btn prev" onclick="moveSlide(this, -1)" aria-label="Previous Jog-the-Robot images">&#10094;</button>
+                    <div class="slider-window">
+                        <div class="slider-track">
+                            <img src="assets/jog-the-robot/app-ready.png" alt="Android app with the robot ready to jog" loading="lazy">
+                            <img src="assets/jog-the-robot/app-jogging.png" alt="Android app during robot jogging" loading="lazy">
+                            <img src="assets/jog-the-robot/jog-axis-selected.png" alt="Jog screen with a robot axis selected" loading="lazy">
+                            <img src="assets/jog-the-robot/ss-stop.png" alt="Gesture control showing the stop pose" loading="lazy">
+                            <img src="assets/jog-the-robot/ss-turn-left.png" alt="Gesture control showing a left turn pose" loading="lazy">
+                            <img src="assets/jog-the-robot/ss-turn-right.png" alt="Gesture control showing a right turn pose" loading="lazy">
+                            <img src="assets/jog-the-robot/5x-robotic-arm-1.jpg" alt="Five-axis robot arm, first view" loading="lazy">
+                            <img src="assets/jog-the-robot/5x-robotic-arm-2.jpg" alt="Five-axis robot arm, second view" loading="lazy">
+                            <img src="assets/jog-the-robot/5x-robotic-arm-3.jpg" alt="Five-axis robot arm, third view" loading="lazy">
+                            <img src="assets/jog-the-robot/esp32-connected-via-ethernet.jpg" alt="ESP32-S3-ETH microcontroller connected via Ethernet" loading="lazy">
+                            <img src="assets/jog-the-robot/x20.jpg" alt="B&amp;R X20 PLC rack and wiring" loading="lazy">
+                            <img src="assets/jog-the-robot/x20-cp-0484-1.jpg" alt="B&amp;R X20CP0484 PLC CPU" loading="lazy">
+                        </div>
+                    </div>
+                    <button type="button" class="slider-btn next" onclick="moveSlide(this, 1)" aria-label="Next Jog-the-Robot images">&#10095;</button>
+                </div>
+            </div>
+        </section>
 
         <!-- PROJECT: Notiz -->
         <section class="work-item">
@@ -1196,6 +1307,9 @@ end:: Notiz screenshot slide show
                         <li>Setting up tunnel behind CGNAT</li>
                         
                     </ul>
+                    <br/>
+                    <p>Checkout<a href="https://github.com/nazmos-sakib/Notiz-Android-App-website" target="_blank" rel="noopener noreferrer"> github</a></p>
+            
                 </div>
                 <!-- IMAGE SLIDER -->
                 <div class="image-slider">
@@ -1220,30 +1334,30 @@ end:: Notiz screenshot slide show
 
         <!-- PROJECT: WhisperNote -->
         <section class="work-item">
-            <input id="project-template-1" type="checkbox" class="toggle-item" />
-            <label for="project-template-1"></label>
+            <input id="project-Whisper-note" type="checkbox" class="toggle-item" />
+            <label for="project-Whisper-note"></label>
 
             <header>
-                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-template-1" aria-expanded="false" aria-controls="project-template-1-details">WhisperNote</button><a aria-label="Open Notiz website" href="https://nazmos-sakib.github.io/WhisperNote/" rel="noopener noreferrer" target="_blank"><span aria-hidden="true" class="fa fa-external-link"></span></a></div>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-Whisper-note" aria-expanded="false" aria-controls="project-Whisper-note-details">WhisperNote</button> <a aria-label="Open Whisper-note website" href="https://nazmos-sakib.github.io/WhisperNote/" rel="noopener noreferrer" target="_blank"><span aria-hidden="true" class="fa fa-external-link"></span></a></div>
                 <div class="date">
                     <span class="startDate">September 2026</span> 
                 </div>
             </header>
 
-            <div class="item" id="project-template-1-details">
+            <div class="item" id="project-Whisper-note-details">
                 <div class="summary">
-                    Replace this with a brief explanation of the app and the problem it solves.
-                    <h3 class="project-subheading">Architecture</h3>
+                    Offline-first Android app for transcribing audio with Whisper, translating transcripts on-device, and listening with background playback. Built with Kotlin and Jetpack Compose.
+                    <h3 class="project-subheading">Development takeaways</h3>
                     <ul class="highlights">
                         <li>On-device AI: Whisper transcription and offline translation.</li>
                         <li>Audio processing: Recording, decoding, playback, and resampling.</li>
                         <li>App architecture: ViewModels, StateFlow, SQLite, and background services.</li>
                         <li>Reliability: Pause/resume, crash recovery, backups, and secure downloads.</li>
                         <li>Quality assurance: Unit tests, UI tests, debugging, and performance checks.</li>
-                        <li></li>
+                    
                     </ul>
-                <br/>
-                <p>Checkout<a href="https://github.com/nazmos-sakib/WhisperNote" target="_blank" rel="noopener noreferrer"> github</a></p>
+                    <br/>
+                    <p>Checkout<a href="https://github.com/nazmos-sakib/WhisperNote" target="_blank" rel="noopener noreferrer"> github</a></p>
             
                 </div>
                 <!-- IMAGE SLIDER -->
@@ -1265,111 +1379,33 @@ end:: Notiz screenshot slide show
             </div>
         </section>
 
-        <!-- PROJECT TEMPLATE 2: edit title, date, description, and image paths; keep IDs unique. -->
+        <!-- PROJECT: Pressure-Monitor-ESP -->
         <section class="work-item">
-            <input id="project-template-2" type="checkbox" class="toggle-item" />
-            <label for="project-template-2"></label>
+            <input id="project-pressure-monitor-esp" type="checkbox" class="toggle-item"  />
+            <label for="project-pressure-monitor-esp"></label>
 
             <header>
-                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-template-2" aria-expanded="false" aria-controls="project-template-2-details">Project template 2</button></div>
-                <div class="date">
-                    <span class="startDate">Month YYYY</span> 
-                </div>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-pressure-monitor-esp" aria-expanded="true" aria-controls="project-pressure-monitor-esp-details">Pressure-Monitor-ESP</button> <a href="https://github.com/nazmos-sakib/Pressure-Monitor-ESP" target="_blank" rel="noopener noreferrer" aria-label="Open Pressure-Monitor-ESP on GitHub"><span class="fa fa-external-link" aria-hidden="true"></span></a></div>
             </header>
 
-            <div class="item" id="project-template-2-details">
+            <div class="item" id="project-pressure-monitor-esp-details">
                 <div class="summary">
-                    Replace this with a brief explanation of the app and the problem it solves.
-                    <h3 class="project-subheading">What I learned</h3>
-                    <ul class="highlights">
-                        <li>On-device AI: Whisper transcription and offline translation.</li>
-                        <li>Audio processing: Recording, decoding, playback, and resampling.</li>
-                        <li>App architecture: ViewModels, StateFlow, SQLite, and background services.</li>
-                        <li>Reliability: Pause/resume, crash recovery, backups, and secure downloads.</li>
-                        <li>Quality assurance: Unit tests, UI tests, debugging, and performance checks.</li>
-                        <li></li>
-                    </ul>
-                </div>
-                <!-- IMAGE SLIDER -->
-                <div class="image-slider">
-                    <button class="slider-btn prev" onclick="moveSlide(this, -1)">&#10094;</button>
-
-                    <div class="slider-window">
-                        <div class="slider-track">
-                            <img src="assets/project-placeholders/screenshot-1.svg" alt="Project template 2: replace screenshot 1">
-                            <img src="assets/project-placeholders/screenshot-2.svg" alt="Project template 2: replace screenshot 2">
-                            <img src="assets/project-placeholders/screenshot-3.svg" alt="Project template 2: replace screenshot 3">
-                        </div>
-                    </div>
-
-                    <button class="slider-btn next" onclick="moveSlide(this, 1)">&#10095;</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROJECT TEMPLATE 3: edit title, date, description, and image paths; keep IDs unique. -->
-        <section class="work-item">
-            <input id="project-template-3" type="checkbox" class="toggle-item" />
-            <label for="project-template-3"></label>
-
-            <header>
-                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-template-3" aria-expanded="false" aria-controls="project-template-3-details">Project template 3</button></div>
-                <div class="date">
-                    <span class="startDate">Month YYYY</span> 
-                </div>
-            </header>
-
-            <div class="item" id="project-template-3-details">
-                <div class="summary">
-                    Offline-first Android app for transcribing audio with Whisper, translating transcripts on-device, and listening with background playback. Built with Kotlin and Jetpack Compose.
-                    <h3 class="project-subheading">What I learned</h3>
-                    <ul class="highlights">
-                        <li>Describe a technical challenge and how you solved it.</li>
-                        <li>Add the skills, testing practices, or tradeoffs you learned.</li>
-                    </ul>
-                </div>
-                <!-- IMAGE SLIDER -->
-                <div class="image-slider">
-                    <button class="slider-btn prev" onclick="moveSlide(this, -1)">&#10094;</button>
-
-                    <div class="slider-window">
-                        <div class="slider-track">
-                            <img src="assets/project-placeholders/screenshot-1.svg" alt="Project template 3: replace screenshot 1">
-                            <img src="assets/project-placeholders/screenshot-2.svg" alt="Project template 3: replace screenshot 2">
-                            <img src="assets/project-placeholders/screenshot-3.svg" alt="Project template 3: replace screenshot 3">
-                        </div>
-                    </div>
-
-                    <button class="slider-btn next" onclick="moveSlide(this, 1)">&#10095;</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROJECT TEMPLATE 4: edit title, date, description, and image paths; keep IDs unique. -->
-        <section class="work-item">
-            <input id="project-template-4" type="checkbox" class="toggle-item" />
-            <label for="project-template-4"></label>
-
-            <header>
-                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-template-4" aria-expanded="false" aria-controls="project-template-4-details">Project template 4</button></div>
-                <div class="date">
-                    <span class="startDate">Month YYYY</span> 
-                </div>
-            </header>
-
-            <div class="item" id="project-template-4-details">
-                <div class="summary">
-                    Replace this with a brief explanation of the app and the problem it solves.
+                    <p>An Android app that receives pressure readings from two sensors connected to an ESP32 over Classic Bluetooth (SPP). It displays head and body readings during a monitoring session and stores sensor data locally with Room.</p>
                     <h3 class="project-subheading">Architecture</h3>
                     <ul class="highlights">
-                        <li>Describe the UI framework, architecture pattern, and main components.</li>
-                        <li>Explain storage, networking, and how data moves through the app.</li>
+                        <li>Kotlin and Jetpack Compose UI, organized with MVVM and Clean Architecture, with Hilt for dependency injection.</li>
+                        <li>Android Bluetooth APIs handle device discovery and connections; Coroutines and StateFlow coordinate asynchronous data and UI updates.</li>
+                        <li>ESP32 firmware reads two analog inputs and sends comma-separated values over Bluetooth serial; Room persists readings on the phone.</li>
                     </ul>
                     <h3 class="project-subheading">What I learned</h3>
                     <ul class="highlights">
-                        <li>Describe a technical challenge and how you solved it.</li>
-                        <li>Add the skills, testing practices, or tradeoffs you learned.</li>
+                        <li>Connecting pressure-sensing hardware to an Android app through an ESP32 and Classic Bluetooth.</li>
+                        <li>Managing Bluetooth permissions, device discovery, and serial data transfer.</li>
+                        <li>Keeping the Compose interface responsive while receiving sensor readings asynchronously.</li>
+                        <li>Separating presentation, domain, and data responsibilities with MVVM, repositories, and dependency injection.</li>
+                        <li>Storing sensor data locally with Room and working with analog readings in ESP32 firmware.</li>
                     </ul>
+                    <p><a href="https://github.com/nazmos-sakib/Pressure-Monitor-ESP" target="_blank" rel="noopener noreferrer">View source code and project documentation on GitHub</a></p>
                 </div>
                 <!-- IMAGE SLIDER -->
                 <div class="image-slider">
@@ -1377,9 +1413,12 @@ end:: Notiz screenshot slide show
 
                     <div class="slider-window">
                         <div class="slider-track">
-                            <img src="assets/project-placeholders/screenshot-1.svg" alt="Project template 4: replace screenshot 1">
-                            <img src="assets/project-placeholders/screenshot-2.svg" alt="Project template 4: replace screenshot 2">
-                            <img src="assets/project-placeholders/screenshot-3.svg" alt="Project template 4: replace screenshot 3">
+                            <img class="show-full-image" src="assets/Pressure-Monitor-ESP/ss_1.jpg" alt="ESP32 wired to two pressure sensors on a breadboard" loading="lazy">
+                            <img src="assets/Pressure-Monitor-ESP/ss_2.jpg" alt="Saved Bluetooth devices including the ESP32" loading="lazy">
+                            <img src="assets/Pressure-Monitor-ESP/ss_3.jpg" alt="Navigation menu with terminal, history, and device options" loading="lazy">
+                            <img src="assets/Pressure-Monitor-ESP/ss_4.jpg" alt="Monitoring session showing head and body sensor readings" loading="lazy">
+                            <img src="assets/Pressure-Monitor-ESP/ss_5.jpg" alt="Start a pressure monitoring session" loading="lazy">
+                            <img src="assets/Pressure-Monitor-ESP/ss_6.jpg" alt="Timestamped sensor readings with head and body indicators" loading="lazy">
                         </div>
                     </div>
 
@@ -1388,31 +1427,33 @@ end:: Notiz screenshot slide show
             </div>
         </section>
 
-        <!-- PROJECT TEMPLATE 5: edit title, date, description, and image paths; keep IDs unique. -->
+        <!-- PROJECT: Target-Log -->
         <section class="work-item">
-            <input id="project-template-5" type="checkbox" class="toggle-item" />
-            <label for="project-template-5"></label>
+            <input id="project-target-log" type="checkbox" class="toggle-item" checked/>
+            <label for="project-target-log"></label>
 
             <header>
-                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-template-5" aria-expanded="false" aria-controls="project-template-5-details">Project template 5</button></div>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-target-log" aria-expanded="false" aria-controls="project-template-target-log">Target-Log</button></div>
                 <div class="date">
-                    <span class="startDate">Month YYYY</span> 
+                    <span class="startDate">May 2025</span> 
                 </div>
             </header>
 
-            <div class="item" id="project-template-5-details">
+            <div class="item" id="project-target-log">
                 <div class="summary">
-                    Replace this with a brief explanation of the app and the problem it solves.
-                    <h3 class="project-subheading">Architecture</h3>
-                    <ul class="highlights">
-                        <li>Describe the UI framework, architecture pattern, and main components.</li>
-                        <li>Explain storage, networking, and how data moves through the app.</li>
-                    </ul>
+                    Activity Tracker via bluetooth and ESP32 
                     <h3 class="project-subheading">What I learned</h3>
                     <ul class="highlights">
-                        <li>Describe a technical challenge and how you solved it.</li>
-                        <li>Add the skills, testing practices, or tradeoffs you learned.</li>
+                        <li>Android permissions, UI state management, Navigation and activity lifecycles.</li>
+                        <li>Bluetooth communication and Asynchronous programming.</li>
+                        <li>Local storage with Room and cloud storage with Firebase.</li>
+                        <li>Local and cloud synchronization.</li>
+                        <li>Application architecture and Dependency injection with Hilt</li>
+
                     </ul>
+                    <br/>
+                    <p>Checkout<a href="https://github.com/nazmos-sakib/Target-Log" target="_blank" rel="noopener noreferrer"> github</a></p>
+            
                 </div>
                 <!-- IMAGE SLIDER -->
                 <div class="image-slider">
@@ -1420,9 +1461,20 @@ end:: Notiz screenshot slide show
 
                     <div class="slider-window">
                         <div class="slider-track">
-                            <img src="assets/project-placeholders/screenshot-1.svg" alt="Project template 5: replace screenshot 1">
-                            <img src="assets/project-placeholders/screenshot-2.svg" alt="Project template 5: replace screenshot 2">
-                            <img src="assets/project-placeholders/screenshot-3.svg" alt="Project template 5: replace screenshot 3">
+                            <img src="assets/target-log/01-home.png" alt="screenshot 01">
+                            <img src="assets/target-log/02-training.png" alt="screenshot 02">
+                            <img src="assets/target-log/03-profile.png" alt="screenshot 03">
+                            <img src="assets/target-log/04-personal.png" alt="screenshot 04">
+                            <img src="assets/target-log/05-change-name.png" alt="screenshot 05">
+                            <img src="assets/target-log/06-change-email.png" alt="screenshot 06">
+                            <img src="assets/target-log/07-analytics.png" alt="screenshot 07">
+                            <img src="assets/target-log/08-workout-history.png" alt="screenshot 08">
+                            <img src="assets/target-log/09-friends.png" alt="screenshot 09">
+                            <img src="assets/target-log/10-add-friends-crash.png" alt="screenshot 10">
+                            <img src="assets/target-log/11-find-my-ball.png" alt="screenshot 11">
+                            <img src="assets/target-log/12-shooting.png" alt="screenshot 12">
+                            <img src="assets/target-log/13-wall-ball.png" alt="screenshot 13">
+                            <img src="assets/target-log/14-wall-ball-paused.png" alt="screenshot 14">
                         </div>
                     </div>
 
@@ -2020,6 +2072,28 @@ end:: Notiz screenshot slide show
 <div class="card-container" style="margin-left: -20%; margin-right: -20%;">
 
     <div class="card">
+        <a href="https://github.com/nazmos-sakib/German-Geo-Facts" target="_blank" rel="noopener noreferrer">
+            <img class="parallax-scrolleffect" src="assets/Jetpack-UI/german-geo-facts/ss_geo_facts.gif" alt="">
+            <div class="card-content">
+                <h3>German-Geo-Facts</h3>
+                <p>
+                </p>
+            </div>
+        </a>    
+    </div>
+
+    <div class="card">
+        <a href="https://github.com/nazmos-sakib/Slide-to-Confirm---Interactive-System-Project" target="_blank" rel="noopener noreferrer">
+            <img class="parallax-scrolleffect" src="assets/Jetpack-UI/Slide-to-Confirm/ss_variant_a_5_full.gif" alt="">
+            <div class="card-content">
+                <h3>Slide-to-Confirm</h3>
+                <p>
+                </p>
+            </div>
+        </a>    
+    </div>
+
+    <div class="card">
         <a href="https://github.com/nazmos-sakib/parallax-scrolleffect-in-jetpackcompose" target="_blank" rel="noopener noreferrer">
             <img class="parallax-scrolleffect" src="assets/Jetpack-UI/parallax-scroll-effect/ss_gif.gif" alt="">
             <div class="card-content">
@@ -2104,6 +2178,43 @@ end:: Notiz screenshot slide show
     </section>
           
             <div class="card-container" style="margin-left: -20%; margin-right: -20%;">
+
+                                
+                <div class="card">
+                    <a href="https://nazmos-sakib.github.io/Notiz-Android-App-website/" target="_blank" rel="noopener noreferrer">
+                        <img class="notiz-image-slider" src="assets/notiz/audio-note.jpg" alt="">
+                        <div class="card-content">
+                            <h3>Notiz</h3>
+                            <p>
+                            </p>
+                        </div>
+                    </a>
+                </div>             
+
+
+                <div class="card">
+                    <a href="https://github.com/nazmos-sakib/WhisperNote" target="_blank" rel="noopener noreferrer">
+                        <img class="Whisper-note" src="assets/WhisperNote/screen-recorder-3x-speed.gif" alt="">
+                        <div class="card-content">
+                            <h3>WhisperNote</h3>
+                            <p>
+                            </p>
+                        </div>
+                    </a>
+                </div>               
+                
+                
+                <div class="card">
+                    <a href="https://github.com/nazmos-sakib/Target-Log" target="_blank" rel="noopener noreferrer">
+                        <img class="terget-log" src="assets/target-log/01-home.png" alt="">
+                        <div class="card-content">
+                            <h3>Target-Log</h3>
+                            <p>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+
 
 
                 <div class="card-without-width">
@@ -2261,11 +2372,51 @@ end:: Notiz screenshot slide show
 
             </div> 
 
+
+    <section class="section" id="plc-microcontroller-project">
+        <header>
+            <h2 class="section-title">PLC/Microcontroller Project</h2>
+        </header>
+        <section class="work-item">
+            <input id="project-jog-demos" type="checkbox" class="toggle-item" checked />
+            <label for="project-jog-demos"></label>
+            <header>
+                <div class="position"><button type="button" class="item-title-toggle" data-toggle="project-jog-demos" aria-expanded="true" aria-controls="project-jog-demos-details">Jog-the-Robot — Demo videos</button></div>
+            </header>
+            <div class="item" id="project-jog-demos-details">
+                <div class="summary"><p>See the Android app, ESP32 bridge, and B&amp;R PLC working together to control the five-axis robot arm.</p></div>
+                <div class="robot-demo-grid">
+                    <div>
+                        <h3 class="project-subheading" id="jog-touch-demo-title">Touch jogging</h3>
+                        <p>Select an axis and hold a direction on the phone to move the arm. The app and robot are shown side by side.</p>
+                        <video controls playsinline preload="none" aria-labelledby="jog-touch-demo-title">
+                            <source src="assets/jog-the-robot/jogScreen-side-by-side-video-demo.mp4" type="video/mp4">
+                            Your browser does not support embedded video.
+                        </video>
+                        <p><a href="assets/jog-the-robot/jogScreen-side-by-side-video-demo.mp4" target="_blank" rel="noopener noreferrer">Open touch jogging demo</a></p>
+                    </div>
+                    <div>
+                        <h3 class="project-subheading" id="jog-gesture-demo-title">Gesture jogging</h3>
+                        <p>Use body poses to select an axis and jog left or right while the phone camera tracks the movement.</p>
+                        <video controls playsinline preload="none" aria-labelledby="jog-gesture-demo-title">
+                            <source src="assets/jog-the-robot/gesture-jog-demo-5.mp4" type="video/mp4">
+                            Your browser does not support embedded video.
+                        </video>
+                        <p><a href="assets/jog-the-robot/gesture-jog-demo-5.mp4" target="_blank" rel="noopener noreferrer">Open gesture jogging demo</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
   </div>
 
     <script>
-        const wortgewandt_images = ["assets/wort-gewandt/1.jpeg", "assets/wort-gewandt/2.jpeg","assets/wort-gewandt/3.jpeg","assets/wort-gewandt/4.jpeg"]; 
-        let wortgewandt_index = 0;
+        const notiz_images = ["assets/notiz/audio-note.jpg", "assets/notiz/checklist.png","assets/notiz/drawings-note.png","assets/notiz/image-note.jpg","assets/notiz/note.png","assets/notiz/notes.png","assets/notiz/table-note.jpg"]; 
+        let notiz_index = 0;
+
+        const target_log_images = ["assets/target-log/01-home.png", "assets/target-log/02-training.png","assets/target-log/03-profile.png","assets/target-log/04-personal.png","assets/target-log/05-change-name.png","assets/target-log/06-change-email.png","assets/target-log/07-analytics.png","assets/target-log/08-workout-history.png","assets/target-log/09-friends.png","assets/target-log/10-add-friends-crash.png","assets/target-log/11-find-my-ball.png","assets/target-log/12-shooting.png","assets/target-log/13-wall-ball.png","assets/target-log/14-wall-ball-paused.png"]; 
+        let target_log_index = 0;
 
         const cash_manager_images = ["assets/cash-manager/1.png","assets/cash-manager/2.png","assets/cash-manager/3.png","assets/cash-manager/4.png","assets/cash-manager/5.png","assets/cash-manager/6.png","assets/cash-manager/7.png","assets/cash-manager/8.png"];
         let cash_manager_index = 0;
@@ -2284,9 +2435,13 @@ end:: Notiz screenshot slide show
       
         
         function changeImage() {
-            //wortgewandt
-          document.querySelector('.Wortgewandt').src = wortgewandt_images[wortgewandt_index];
-          wortgewandt_index = (wortgewandt_index + 1) % wortgewandt_images.length;
+          //notiz
+          document.querySelector('.notiz-image-slider').src = notiz_images[notiz_index];
+          notiz_index = (notiz_index + 1) % notiz_images.length;
+
+          //Target Log
+          document.querySelector('.terget-log').src = target_log_images[target_log_index];
+          target_log_index = (target_log_index + 1) % target_log_images.length;
 
           //cash_manager
           document.querySelector('.CashManager').src = cash_manager_images[cash_manager_index];
